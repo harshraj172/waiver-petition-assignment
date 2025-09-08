@@ -1,0 +1,286 @@
+// This Gradle build file configures your project for comprehensive testing
+// with JUnit 4, JaCoCo code coverage, and PIT mutation testing
+
+plugins {
+    // Core Java plugin for compilation and basic tasks
+    id 'java'
+
+    // JaCoCo plugin for code coverage analysis
+    id 'jacoco'
+
+    // PIT mutation testing plugin - this analyzes how well your tests
+    // detect potential bugs by introducing small changes (mutations) to your code
+    id 'info.solidsoft.pitest' version '1.15.0'
+}
+
+// Configure where Gradle looks for dependencies
+repositories {
+    mavenCentral()
+}
+
+// Define the Java version compatibility
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+// Project dependencies - what libraries your code needs
+dependencies {
+    // JUnit 4 for unit testing (not JUnit 5/Jupiter)
+    testImplementation 'junit:junit:4.13.2'
+
+    // Hamcrest matchers - often used with JUnit for more expressive assertions
+    testImplementation 'org.hamcrest:hamcrest-core:1.3'
+}
+
+// Configure the source sets - telling Gradle where your code lives
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['test']
+        }
+    }
+}
+
+// Test configuration - how tests should run
+test {
+    // Use JUnit Platform (but configured for JUnit 4 tests)
+    useJUnit()
+
+    // Show detailed test output in the console
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+
+        // Show the full exception stack traces
+        exceptionFormat = 'full'
+
+        // Display test results as they run
+        showStandardStreams = false
+
+        // Show causes of test failures
+        showCauses = true
+
+        // Show exceptions that caused failures
+        showExceptions = true
+
+        // Show stack traces
+        showStackTraces = true
+    }
+
+    // Generate JaCoCo execution data during test runs
+    finalizedBy jacocoTestReport
+}
+
+// JaCoCo configuration for code coverage analysis
+jacoco {
+    // Use a recent version of JaCoCo for better Java compatibility
+    toolVersion = "0.8.11"
+}
+
+// Configure the JaCoCo test report
+jacocoTestReport {
+    // Ensure tests run before generating the report
+    dependsOn test
+
+    // Configure report formats
+    reports {
+        // XML report (useful for CI/CD tools)
+        xml {
+            required = true
+            destination file("${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+        }
+
+        // HTML report (human-readable in browser)
+        html {
+            required = true
+            destination file("${buildDir}/reports/jacoco/test/html")
+        }
+
+        // CSV report (for data analysis)
+        csv {
+            required = false
+        }
+    }
+
+    // After generating the report, check coverage thresholds
+    finalizedBy jacocoTestCoverageVerification
+}
+
+// Coverage verification - enforce minimum coverage levels
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            // This rule applies to the entire bundle
+            element = 'BUNDLE'
+
+            // Require 100% line coverage
+            limit {
+                counter = 'LINE'
+                minimum = 0.8
+            }
+
+            // Require 100% branch coverage
+            limit {
+                counter = 'BRANCH'
+                minimum = 0.8
+            }
+
+            // Require 100% instruction coverage
+            limit {
+                counter = 'INSTRUCTION'
+                minimum = 0.8
+            }
+        }
+
+        // You can also set per-class rules if needed
+        rule {
+            element = 'CLASS'
+
+            // Exclude test classes from coverage requirements
+            excludes = ['*Test', '*Tests']
+
+            // Each class must have 100% line coverage
+            limit {
+                counter = 'LINE'
+                minimum = 0.8
+            }
+        }
+    }
+}
+
+// PIT mutation testing configuration
+pitest {
+    // Use a modern PIT core (or delete this line to use the plugin default)
+    pitestVersion = '1.20.2'   // was '1.4.0'
+
+    // JUnit 4
+    testPlugin = 'junit'
+
+    // Helps on Windows / long classpaths
+    useClasspathFile = true
+
+    // Target classes to mutate - your production code
+    targetClasses = [
+            'expression.*',
+            'intervals.*'
+    ]
+
+    // Test classes that will detect the mutations
+    targetTests = [
+            '*Test',
+            '*Tests'
+    ]
+
+    threads = 4
+    outputFormats = ['HTML', 'XML', 'CSV']
+    timestampedReports = false
+    reportDir = file('build/reports/pitest')
+
+    // Reasonable timeout per test
+    timeoutConstInMillis = 10000
+
+    // Mutators
+    mutators = [
+            'CONDITIONALS_BOUNDARY',
+            'INCREMENTS',
+            'INVERT_NEGS',
+            'MATH',
+            'NEGATE_CONDITIONALS',
+            'VOID_METHOD_CALLS',
+            'TRUE_RETURNS',
+            'FALSE_RETURNS',
+            'NULL_RETURNS',
+            'PRIMITIVE_RETURNS',
+            'REMOVE_CONDITIONALS'
+    ]
+
+    excludedMethods = ['toString', 'hashCode', 'equals']
+    jvmArgs = ['-Xmx1024m']
+
+    // Verbose PIT logs
+    verbose = true
+
+    // Fail the build if thresholds aren’t met
+    mutationThreshold = 100
+    coverageThreshold = 100
+}
+
+// Custom task to run all quality checks
+task fullTestSuite {
+    group = 'verification'
+    description = 'Runs all tests with coverage and mutation testing'
+
+    dependsOn test
+    dependsOn jacocoTestReport
+    dependsOn jacocoTestCoverageVerification
+    dependsOn pitest
+
+    doLast {
+        println "\n" + "="*60
+        println "FULL TEST SUITE COMPLETED"
+        println "="*60
+        println "Check the following reports:"
+        println "  - Test Results: ${buildDir}/reports/tests/test/index.html"
+        println "  - JaCoCo Coverage: ${buildDir}/reports/jacoco/test/html/index.html"
+        println "  - PIT Mutations: ${buildDir}/reports/pitest/index.html"
+        println "="*60
+    }
+}
+
+// Task to display a testing menu
+task testingMenu {
+    group = 'help'
+    description = 'Shows available testing commands'
+
+    doLast {
+        println """
+        ${"="*60}
+        TESTING COMMANDS MENU
+        ${"="*60}
+        
+        Basic Commands:
+        --------------
+        ./gradlew clean          - Clean build directory
+        ./gradlew build          - Compile code and run tests
+        ./gradlew test           - Run JUnit tests only
+        
+        Coverage Analysis:
+        -----------------
+        ./gradlew jacocoTestReport                - Generate coverage report
+        ./gradlew jacocoTestCoverageVerification  - Check coverage thresholds
+        
+        Mutation Testing:
+        ----------------
+        ./gradlew pitest         - Run PIT mutation testing
+        
+        Combined Testing:
+        ----------------
+        ./gradlew fullTestSuite  - Run everything (tests + coverage + mutations)
+        
+        View Reports:
+        ------------
+        After running tests, open these files in your browser:
+        - build/reports/tests/test/index.html      (Test results)
+        - build/reports/jacoco/test/html/index.html (Coverage)
+        - build/reports/pitest/index.html          (Mutations)
+        
+        Quick Development Cycle:
+        -----------------------
+        ./gradlew clean test     - Clean and run tests
+        ./gradlew test --continuous - Auto-run tests on file changes
+        
+        ${"="*60}
+        """
+    }
+}
+
+// Configure the wrapper task to use a specific Gradle version
+wrapper {
+    gradleVersion = '7.6'
+    distributionType = Wrapper.DistributionType.ALL
+}

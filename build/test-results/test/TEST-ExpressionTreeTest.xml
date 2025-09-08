@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ExpressionTreeTest" tests="38" skipped="0" failures="0" errors="0" timestamp="2025-09-08T18:20:57" hostname="harsh" time="0.192">
+  <properties/>
+  <testcase name="testInvalidOperator" classname="ExpressionTreeTest" time="0.113"/>
+  <testcase name="testTooFewOperandsForOperator" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testSimpleMultiplication" classname="ExpressionTreeTest" time="0.06"/>
+  <testcase name="testOnlyOperator" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testScientificNotation" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testSingleNumber" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testDivisionByZeroComplex" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testVeryLongExpression" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testSimpleAddition" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testTooManyOperands" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testMixedInvalidTokens" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testFractionalDivision" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testEmptyExpression" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testNullExpression" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testAllOperators" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testDeeplyNestedExpression" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testMultipleOperatorsNoOperands" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testSimpleSubtraction" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testWhitespaceHandling" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testWhitespaceOnlyExpression" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testDecimalNumbers" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testComplexTextTree" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testSimpleDivision" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testOperatorPrecedenceInPostfix" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testNegativeDivision" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testChainedOperations" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testDivisionByZero" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testNegativeNumber" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testVerySmallNumbers" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testLargeNumbers" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testNegativeNumbersInOperation" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testZeroInOperations" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testInvalidToken" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testComplexExpression1" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testComplexExpression2" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testComplexExpression3" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testComplexExpression4" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testTooFewOperandsComplex" classname="ExpressionTreeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

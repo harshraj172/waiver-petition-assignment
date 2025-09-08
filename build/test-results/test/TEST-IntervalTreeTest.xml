@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="IntervalTreeTest" tests="46" skipped="0" failures="0" errors="0" timestamp="2025-09-08T18:20:57" hostname="harsh" time="0.119">
+  <properties/>
+  <testcase name="testSimpleUnion" classname="IntervalTreeTest" time="0.102"/>
+  <testcase name="testBoundaryValues" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testIdenticalIntervals" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testInvalidIntervalValues1" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testInvalidIntervalValues2" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testInvalidOperator" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testTooFewOperandsForOperator" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testOnlyOperator" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testIntervalFormatVariations" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testLargeIntervals" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testVeryLongExpression" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testNegativeIntervals" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testTooManyOperands" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testMixedInvalidTokens" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testMixedSignIntervals" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testSimpleIntersection" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testEmptyExpression" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testZeroInterval" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testNullExpression" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testAllOperators" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testDeeplyNestedExpression" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testSingleInterval" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testMultipleOperatorsNoOperands" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testZeroLengthInterval" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testWhitespaceHandling" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testVeryLargeNegativeInterval" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testWhitespaceOnlyExpression" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testAlternatingOperations" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testComplexTextTree" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testExamplesFromAssignment" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testTouchingIntervals" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testNoIntersection" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testInvalidIntervalOrder" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testMixedOperations" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testInvalidIntervalFormat1" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testInvalidIntervalFormat2" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testInvalidIntervalFormat3" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testInvalidIntervalFormat4" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testInvalidIntervalFormat5" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testChainedIntersections" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testChainedUnions" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testComplexExpression1" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testComplexExpression2" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testTooFewOperandsComplex" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testCompletelyContainedIntervals" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testAdjacentIntervals" classname="IntervalTreeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
