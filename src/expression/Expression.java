@@ -7,20 +7,23 @@ package expression;
 public interface Expression {
   /**
    * Evaluate this expression.
+   *
    * @return the result of this expression as a double-precision value
    */
   double evaluate();
 
   /**
    * Compute and return the infix form of this expression.
+   *
    * @return the infix form of this expression as a space-separated string
-   * with parentheses.
+   *         with parentheses.
    */
   String infix();
 
   /**
    * Compute and return a string representation of this expression in valid
    * Scheme syntax.
+   *
    * @return the expression in Scheme as a string
    */
   String schemeExpression();
@@ -38,7 +41,7 @@ public interface Expression {
    *   |___2.0
    * </pre>
    *
-   * The expression "1 4 6 - 5 + / will be formatted as a
+   * <p>The expression "1 4 6 - 5 + / will be formatted as a
    * string:
    * <pre>
    *   /
@@ -73,6 +76,7 @@ public interface Expression {
    *   <li>Operators and operands are represented by their respective
    *   symbols (+,-,*,/) and operand value respectively.</li>
    * </ul>
+   *
    * @return a string in the above format
    */
   String textTree();

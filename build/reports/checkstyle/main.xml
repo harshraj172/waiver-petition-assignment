@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.23.1">
+<file name="/mnt/c/Users/harsh/Documents/Northeastern/PDP/waiver-petition-assignment/src/expression/Expression.java">
+</file>
+<file name="/mnt/c/Users/harsh/Documents/Northeastern/PDP/waiver-petition-assignment/src/expression/ExpressionTree.java">
+</file>
+<file name="/mnt/c/Users/harsh/Documents/Northeastern/PDP/waiver-petition-assignment/src/intervals/Interval.java">
+</file>
+<file name="/mnt/c/Users/harsh/Documents/Northeastern/PDP/waiver-petition-assignment/src/intervals/Intervals.java">
+</file>
+<file name="/mnt/c/Users/harsh/Documents/Northeastern/PDP/waiver-petition-assignment/src/intervals/IntervalTree.java">
+</file>
+</checkstyle>

@@ -7,6 +7,7 @@ package intervals;
 public interface Intervals {
   /**
    * Evaluate this expression of intervals and return the resulting interval.
+   *
    * @return the result as an Interval object
    */
   Interval evaluate();
@@ -24,7 +25,7 @@ public interface Intervals {
    *   |___3,4
    * </pre>
    *
-   * The expression "(1,2) (3,4) (4,6) U (3,5) I U will be formatted as a
+   * <p>The expression "(1,2) (3,4) (4,6) U (3,5) I U will be formatted as a
    * string:
    * <pre>
    *   U
@@ -59,6 +60,7 @@ public interface Intervals {
    *   <li>Operators and operands are represented by their respective
    *   symbols (U,I) and start,end respectively.</li>
    * </ul>
+   *
    * @return a string in the above format
    */
   String textTree();
