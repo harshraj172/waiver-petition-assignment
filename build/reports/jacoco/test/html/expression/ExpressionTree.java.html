@@ -73,34 +73,33 @@ public class ExpressionTree implements Expression {
 
     @Override
     String infix() {
-      // Format the number appropriately
-<span class="pc bpc" id="L77" title="1 of 4 branches missed.">      if (value == Math.floor(value) &amp;&amp; !Double.isInfinite(value)) {</span>
-<span class="fc" id="L78">        return String.format(&quot;%.1f&quot;, value);</span>
+<span class="pc bpc" id="L76" title="1 of 4 branches missed.">      if (value == Math.floor(value) &amp;&amp; !Double.isInfinite(value)) {</span>
+<span class="fc" id="L77">        return String.format(&quot;%.1f&quot;, value);</span>
       }
-<span class="fc" id="L80">      return String.valueOf(value);</span>
+<span class="fc" id="L79">      return String.valueOf(value);</span>
     }
 
     @Override
     String schemeExpression() {
       // Format the number appropriately for Scheme
-<span class="pc bpc" id="L86" title="1 of 4 branches missed.">      if (value == Math.floor(value) &amp;&amp; !Double.isInfinite(value)) {</span>
-<span class="fc" id="L87">        return String.format(&quot;%.1f&quot;, value);</span>
+<span class="pc bpc" id="L85" title="1 of 4 branches missed.">      if (value == Math.floor(value) &amp;&amp; !Double.isInfinite(value)) {</span>
+<span class="fc" id="L86">        return String.format(&quot;%.1f&quot;, value);</span>
       }
-<span class="fc" id="L89">      return String.valueOf(value);</span>
+<span class="fc" id="L88">      return String.valueOf(value);</span>
     }
 
     @Override
     String textTree(String prefix, boolean isLast) {
-      // Just return the value for leaf nodes
-<span class="pc bpc" id="L95" title="1 of 4 branches missed.">      if (value == Math.floor(value) &amp;&amp; !Double.isInfinite(value)) {</span>
-<span class="fc" id="L96">        return String.format(&quot;%.1f&quot;, value);</span>
+      // return the value for leaf nodes
+<span class="pc bpc" id="L94" title="1 of 4 branches missed.">      if (value == Math.floor(value) &amp;&amp; !Double.isInfinite(value)) {</span>
+<span class="fc" id="L95">        return String.format(&quot;%.1f&quot;, value);</span>
       }
-<span class="fc" id="L98">      return String.valueOf(value);</span>
+<span class="fc" id="L97">      return String.valueOf(value);</span>
     }
 
     @Override
     int getHeight() {
-<span class="nc" id="L103">      return 1;</span>
+<span class="nc" id="L102">      return 1;</span>
     }
   }
 
@@ -119,83 +118,81 @@ public class ExpressionTree implements Expression {
      * @param left the left child node
      * @param right the right child node
      */
-<span class="fc" id="L122">    public OperatorNode(String operator, Node left, Node right) {</span>
-<span class="fc" id="L123">      this.operator = operator;</span>
-<span class="fc" id="L124">      this.left = left;</span>
-<span class="fc" id="L125">      this.right = right;</span>
-<span class="fc" id="L126">    }</span>
+<span class="fc" id="L121">    public OperatorNode(String operator, Node left, Node right) {</span>
+<span class="fc" id="L122">      this.operator = operator;</span>
+<span class="fc" id="L123">      this.left = left;</span>
+<span class="fc" id="L124">      this.right = right;</span>
+<span class="fc" id="L125">    }</span>
 
     @Override
     double evaluate() {
-<span class="fc" id="L130">      double leftVal = left.evaluate();</span>
-<span class="fc" id="L131">      double rightVal = right.evaluate();</span>
+<span class="fc" id="L129">      double leftVal = left.evaluate();</span>
+<span class="fc" id="L130">      double rightVal = right.evaluate();</span>
 
-<span class="pc bpc" id="L133" title="1 of 5 branches missed.">      switch (operator) {</span>
+<span class="pc bpc" id="L132" title="1 of 5 branches missed.">      switch (operator) {</span>
         case &quot;+&quot;:
-<span class="fc" id="L135">          return leftVal + rightVal;</span>
+<span class="fc" id="L134">          return leftVal + rightVal;</span>
         case &quot;-&quot;:
-<span class="fc" id="L137">          return leftVal - rightVal;</span>
+<span class="fc" id="L136">          return leftVal - rightVal;</span>
         case &quot;*&quot;:
-<span class="fc" id="L139">          return leftVal * rightVal;</span>
+<span class="fc" id="L138">          return leftVal * rightVal;</span>
         case &quot;/&quot;:
-<span class="fc bfc" id="L141" title="All 2 branches covered.">          if (rightVal == 0) {</span>
-<span class="fc" id="L142">            throw new ArithmeticException(&quot;Division by zero&quot;);</span>
+<span class="fc bfc" id="L140" title="All 2 branches covered.">          if (rightVal == 0) {</span>
+<span class="fc" id="L141">            throw new ArithmeticException(&quot;Division by zero&quot;);</span>
           }
-<span class="fc" id="L144">          return leftVal / rightVal;</span>
+<span class="fc" id="L143">          return leftVal / rightVal;</span>
         default:
           // This should never happen if isOperator is correct
-<span class="nc" id="L147">          throw new IllegalArgumentException(&quot;Unknown operator: &quot; + operator);</span>
+<span class="nc" id="L146">          throw new IllegalArgumentException(&quot;Unknown operator: &quot; + operator);</span>
       }
     }
 
     @Override
     String infix() {
-<span class="fc" id="L153">      return &quot;( &quot; + left.infix() + &quot; &quot; + operator + &quot; &quot; + right.infix() + &quot; )&quot;;</span>
+<span class="fc" id="L152">      return &quot;( &quot; + left.infix() + &quot; &quot; + operator + &quot; &quot; + right.infix() + &quot; )&quot;;</span>
     }
 
     @Override
     String schemeExpression() {
-<span class="fc" id="L158">      return &quot;( &quot; + operator + &quot; &quot; + left.schemeExpression() + &quot; &quot;</span>
-<span class="fc" id="L159">          + right.schemeExpression() + &quot; )&quot;;</span>
+<span class="fc" id="L157">      return &quot;( &quot; + operator + &quot; &quot; + left.schemeExpression() + &quot; &quot;</span>
+<span class="fc" id="L158">          + right.schemeExpression() + &quot; )&quot;;</span>
     }
 
     @Override
     String textTree(String prefix, boolean isLast) {
-<span class="fc" id="L164">      StringBuilder result = new StringBuilder();</span>
+<span class="fc" id="L163">      StringBuilder result = new StringBuilder();</span>
 
       // Add the operator
-<span class="fc" id="L167">      result.append(operator).append(&quot;\n&quot;);</span>
+<span class="fc" id="L166">      result.append(operator).append(&quot;\n&quot;);</span>
 
       // Add the connecting lines
+<span class="fc" id="L169">      result.append(prefix).append(&quot;|\n&quot;);</span>
 <span class="fc" id="L170">      result.append(prefix).append(&quot;|\n&quot;);</span>
-<span class="fc" id="L171">      result.append(prefix).append(&quot;|\n&quot;);</span>
 
       // Add the left child with its prefix
-<span class="fc" id="L174">      result.append(prefix).append(&quot;|___&quot;);</span>
-<span class="fc" id="L175">      String leftResult = left.textTree(prefix + &quot;|   &quot;, false);</span>
-<span class="fc" id="L176">      result.append(leftResult);</span>
+<span class="fc" id="L173">      result.append(prefix).append(&quot;|___&quot;);</span>
+<span class="fc" id="L174">      String leftResult = left.textTree(prefix + &quot;|   &quot;, false);</span>
+<span class="fc" id="L175">      result.append(leftResult);</span>
 
       // Always add newline after left child
-<span class="pc bpc" id="L179" title="1 of 2 branches missed.">      if (!leftResult.endsWith(&quot;\n&quot;)) {</span>
-<span class="fc" id="L180">        result.append(&quot;\n&quot;);</span>
+<span class="pc bpc" id="L178" title="1 of 2 branches missed.">      if (!leftResult.endsWith(&quot;\n&quot;)) {</span>
+<span class="fc" id="L179">        result.append(&quot;\n&quot;);</span>
       }
 
       // Add spacing line before right child
-<span class="fc" id="L184">      result.append(prefix).append(&quot;|\n&quot;);</span>
+<span class="fc" id="L183">      result.append(prefix).append(&quot;|\n&quot;);</span>
 
       // Add the right child
-<span class="fc" id="L187">      result.append(prefix).append(&quot;|___&quot;);</span>
-<span class="fc" id="L188">      String rightResult = right.textTree(prefix + &quot;    &quot;, true);</span>
-<span class="fc" id="L189">      result.append(rightResult);</span>
+<span class="fc" id="L186">      result.append(prefix).append(&quot;|___&quot;);</span>
+<span class="fc" id="L187">      String rightResult = right.textTree(prefix + &quot;    &quot;, true);</span>
+<span class="fc" id="L188">      result.append(rightResult);</span>
 
-      // Don't add trailing newline - parent will handle it
-
-<span class="fc" id="L193">      return result.toString();</span>
+<span class="fc" id="L190">      return result.toString();</span>
     }
 
     @Override
     int getHeight() {
-<span class="nc" id="L198">      return 1 + Math.max(left.getHeight(), right.getHeight());</span>
+<span class="nc" id="L195">      return 1 + Math.max(left.getHeight(), right.getHeight());</span>
     }
   }
 
@@ -207,13 +204,13 @@ public class ExpressionTree implements Expression {
    * @param postfixExpression the postfix expression as a space-separated string
    * @throws IllegalArgumentException if the expression is invalid
    */
-<span class="fc" id="L210">  public ExpressionTree(String postfixExpression) throws IllegalArgumentException {</span>
-<span class="fc bfc" id="L211" title="All 4 branches covered.">    if (postfixExpression == null || postfixExpression.trim().isEmpty()) {</span>
-<span class="fc" id="L212">      throw new IllegalArgumentException(&quot;Expression cannot be null or empty&quot;);</span>
+<span class="fc" id="L207">  public ExpressionTree(String postfixExpression) throws IllegalArgumentException {</span>
+<span class="fc bfc" id="L208" title="All 4 branches covered.">    if (postfixExpression == null || postfixExpression.trim().isEmpty()) {</span>
+<span class="fc" id="L209">      throw new IllegalArgumentException(&quot;Expression cannot be null or empty&quot;);</span>
     }
 
-<span class="fc" id="L215">    this.root = parsePostfix(postfixExpression.trim());</span>
-<span class="fc" id="L216">  }</span>
+<span class="fc" id="L212">    this.root = parsePostfix(postfixExpression.trim());</span>
+<span class="fc" id="L213">  }</span>
 
   /**
    * Parses a postfix expression and builds the expression tree.
@@ -223,42 +220,41 @@ public class ExpressionTree implements Expression {
    * @throws IllegalArgumentException if the expression is invalid
    */
   private Node parsePostfix(String expression) throws IllegalArgumentException {
-<span class="fc" id="L226">    String[] tokens = expression.split(&quot;\\s+&quot;);</span>
-<span class="fc" id="L227">    Stack&lt;Node&gt; stack = new Stack&lt;&gt;();</span>
+<span class="fc" id="L223">    String[] tokens = expression.split(&quot;\\s+&quot;);</span>
+<span class="fc" id="L224">    Stack&lt;Node&gt; stack = new Stack&lt;&gt;();</span>
 
-<span class="fc bfc" id="L229" title="All 2 branches covered.">    for (String token : tokens) {</span>
-<span class="fc bfc" id="L230" title="All 2 branches covered.">      if (isOperator(token)) {</span>
+<span class="fc bfc" id="L226" title="All 2 branches covered.">    for (String token : tokens) {</span>
+<span class="fc bfc" id="L227" title="All 2 branches covered.">      if (isOperator(token)) {</span>
         // Check if we have enough operands
-<span class="fc bfc" id="L232" title="All 2 branches covered.">        if (stack.size() &lt; 2) {</span>
-<span class="fc" id="L233">          throw new IllegalArgumentException(</span>
+<span class="fc bfc" id="L229" title="All 2 branches covered.">        if (stack.size() &lt; 2) {</span>
+<span class="fc" id="L230">          throw new IllegalArgumentException(</span>
               &quot;Invalid expression: insufficient operands for operator &quot; + token);
         }
         // Pop in reverse order (right first, then left)
-<span class="fc" id="L237">        Node right = stack.pop();</span>
-<span class="fc" id="L238">        Node left = stack.pop();</span>
-<span class="fc" id="L239">        stack.push(new OperatorNode(token, left, right));</span>
-<span class="fc" id="L240">      } else {</span>
-        // Try to parse as a number
+<span class="fc" id="L234">        Node right = stack.pop();</span>
+<span class="fc" id="L235">        Node left = stack.pop();</span>
+<span class="fc" id="L236">        stack.push(new OperatorNode(token, left, right));</span>
+<span class="fc" id="L237">      } else {</span>
+        // Parse as a number
         try {
-<span class="fc" id="L243">          double value = Double.parseDouble(token);</span>
-<span class="fc" id="L244">          stack.push(new NumberNode(value));</span>
-<span class="fc" id="L245">        } catch (NumberFormatException e) {</span>
-<span class="fc" id="L246">          throw new IllegalArgumentException(&quot;Invalid token: &quot; + token);</span>
-<span class="fc" id="L247">        }</span>
+<span class="fc" id="L240">          double value = Double.parseDouble(token);</span>
+<span class="fc" id="L241">          stack.push(new NumberNode(value));</span>
+<span class="fc" id="L242">        } catch (NumberFormatException e) {</span>
+<span class="fc" id="L243">          throw new IllegalArgumentException(&quot;Invalid token: &quot; + token);</span>
+<span class="fc" id="L244">        }</span>
       }
     }
 
-    // Check that we have exactly one element left (the root)
-<span class="fc bfc" id="L252" title="All 2 branches covered.">    if (stack.size() != 1) {</span>
-<span class="pc bpc" id="L253" title="1 of 2 branches missed.">      if (stack.isEmpty()) {</span>
-<span class="nc" id="L254">        throw new IllegalArgumentException(&quot;Invalid expression: no result&quot;);</span>
+<span class="fc bfc" id="L248" title="All 2 branches covered.">    if (stack.size() != 1) {</span>
+<span class="pc bpc" id="L249" title="1 of 2 branches missed.">      if (stack.isEmpty()) {</span>
+<span class="nc" id="L250">        throw new IllegalArgumentException(&quot;Invalid expression: no result&quot;);</span>
       } else {
-<span class="fc" id="L256">        throw new IllegalArgumentException(</span>
+<span class="fc" id="L252">        throw new IllegalArgumentException(</span>
             &quot;Invalid expression: too many operands&quot;);
       }
     }
 
-<span class="fc" id="L261">    return stack.pop();</span>
+<span class="fc" id="L257">    return stack.pop();</span>
   }
 
   /**
@@ -268,28 +264,28 @@ public class ExpressionTree implements Expression {
    * @return true if the token is an operator, false otherwise
    */
   private boolean isOperator(String token) {
-<span class="fc bfc" id="L271" title="All 4 branches covered.">    return token.equals(&quot;+&quot;) || token.equals(&quot;-&quot;)</span>
-<span class="fc bfc" id="L272" title="All 4 branches covered.">        || token.equals(&quot;*&quot;) || token.equals(&quot;/&quot;);</span>
+<span class="fc bfc" id="L267" title="All 4 branches covered.">    return token.equals(&quot;+&quot;) || token.equals(&quot;-&quot;)</span>
+<span class="fc bfc" id="L268" title="All 4 branches covered.">        || token.equals(&quot;*&quot;) || token.equals(&quot;/&quot;);</span>
   }
 
   @Override
   public double evaluate() {
-<span class="fc" id="L277">    return root.evaluate();</span>
+<span class="fc" id="L273">    return root.evaluate();</span>
   }
 
   @Override
   public String infix() {
-<span class="fc" id="L282">    return root.infix();</span>
+<span class="fc" id="L278">    return root.infix();</span>
   }
 
   @Override
   public String schemeExpression() {
-<span class="fc" id="L287">    return root.schemeExpression();</span>
+<span class="fc" id="L283">    return root.schemeExpression();</span>
   }
 
   @Override
   public String textTree() {
-<span class="fc" id="L292">    return root.textTree(&quot;&quot;, true);</span>
+<span class="fc" id="L288">    return root.textTree(&quot;&quot;, true);</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

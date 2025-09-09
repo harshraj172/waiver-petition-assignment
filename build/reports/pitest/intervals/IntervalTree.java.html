@@ -1565,7 +1565,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>          // This should never happen if isOperator is correct</span></pre></td></tr>
+<td class=''><pre><span  class=''>          // should never happen if isOperator is correct</span></pre></td></tr>
 
 
 <tr>
@@ -1689,7 +1689,7 @@
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_112'/>
 112
 </td>
@@ -1700,11 +1700,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      // Add the operator</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      result.append(operator).append(&#34;\n&#34;);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_113'/>
 113
 </td>
@@ -1715,11 +1715,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      result.append(operator).append(&#34;\n&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_114'/>
 114
 </td>
@@ -1730,11 +1730,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|\n&#34;);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_115'/>
 115
 </td>
@@ -1745,11 +1745,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      // Add the connecting lines</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|\n&#34;);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_116'/>
 116
 </td>
@@ -1760,7 +1760,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|\n&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -1775,11 +1775,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|\n&#34;);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|___&#34;);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_118'/>
 118
 </td>
@@ -1790,11 +1790,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      String leftResult = left.textTree(prefix + &#34;|   &#34;, false);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_119'/>
 119
 </td>
@@ -1805,11 +1805,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      // Add the left child with its prefix</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      result.append(leftResult);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_120'/>
 120
 </td>
@@ -1820,7 +1820,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|___&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -1828,14 +1828,16 @@
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_121'/>
 121
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_121'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_121'>1</a>
 <span>
+1. textTree : negated conditional &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      String leftResult = left.textTree(prefix + &#34;|   &#34;, false);</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>      if (!leftResult.endsWith(&#34;\n&#34;)) {</span></pre></td></tr>
 
 
 <tr>
@@ -1850,7 +1852,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      result.append(leftResult);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        result.append(&#34;\n&#34;);</span></pre></td></tr>
 
 
 <tr>
@@ -1865,7 +1867,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
 
 
 <tr>
@@ -1880,7 +1882,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      // Always add newline after left child</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -1888,20 +1890,18 @@
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_125'/>
 125
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_125'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_125'></a>
 <span>
-1. textTree : negated conditional &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>      if (!leftResult.endsWith(&#34;\n&#34;)) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|\n&#34;);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_126'/>
 126
 </td>
@@ -1912,11 +1912,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        result.append(&#34;\n&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_127'/>
 127
 </td>
@@ -1927,11 +1927,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|___&#34;);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_128'/>
 128
 </td>
@@ -1942,11 +1942,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      String rightResult = right.textTree(prefix + &#34;    &#34;, true);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_129'/>
 129
 </td>
@@ -1957,11 +1957,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      // Add spacing line before right child</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      result.append(rightResult);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_130'/>
 130
 </td>
@@ -1972,22 +1972,24 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|\n&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_131'/>
 131
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_131'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_131'>1</a>
 <span>
+1. textTree : replaced return value with &#34;&#34; for intervals/IntervalTree$OperatorNode::textTree &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>      return result.toString();</span></pre></td></tr>
 
 
 <tr>
@@ -2002,11 +2004,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      // Add the right child</span></pre></td></tr>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_133'/>
 133
 </td>
@@ -2017,11 +2019,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      result.append(prefix).append(&#34;|___&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_134'/>
 134
 </td>
@@ -2032,11 +2034,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      String rightResult = right.textTree(prefix + &#34;    &#34;, true);</span></pre></td></tr>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_135'/>
 135
 </td>
@@ -2047,22 +2049,25 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      result.append(rightResult);</span></pre></td></tr>
+<td class=''><pre><span  class=''>    int getHeight() {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='uncovered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_136'/>
 136
 </td>
-<td class=''>
+<td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_136'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_136'>2</a>
 <span>
+1. getHeight : Replaced integer addition with subtraction &rarr; NO_COVERAGE<br/>
+2. getHeight : replaced int return with 0 for intervals/IntervalTree$OperatorNode::getHeight &rarr; NO_COVERAGE<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='uncovered'><pre><span  class='survived'>      return 1 + Math.max(left.getHeight(), right.getHeight());</span></pre></td></tr>
 
 
 <tr>
@@ -2077,7 +2082,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      // Don&#39;t add trailing newline - parent will handle it</span></pre></td></tr>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
@@ -2092,24 +2097,22 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_139'/>
 139
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_139'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_139'></a>
 <span>
-1. textTree : replaced return value with &#34;&#34; for intervals/IntervalTree$OperatorNode::textTree &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>      return result.toString();</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -2124,7 +2127,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''>  private final Node root;</span></pre></td></tr>
 
 
 <tr>
@@ -2154,7 +2157,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
 
 
 <tr>
@@ -2169,25 +2172,22 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    int getHeight() {</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * Constructs an IntervalTree from a postfix interval expression string.</span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_144'/>
 144
 </td>
-<td class='survived'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_144'>2</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_144'></a>
 <span>
-1. getHeight : Replaced integer addition with subtraction &rarr; NO_COVERAGE<br/>
-2. getHeight : replaced int return with 0 for intervals/IntervalTree$OperatorNode::getHeight &rarr; NO_COVERAGE<br/>
-
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>      return 1 + Math.max(left.getHeight(), right.getHeight());</span></pre></td></tr>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
 
 
 <tr>
@@ -2202,7 +2202,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @param postfixExpression the postfix expression as a space-separated string</span></pre></td></tr>
 
 
 <tr>
@@ -2217,7 +2217,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @throws IllegalArgumentException if the expression is invalid</span></pre></td></tr>
 
 
 <tr>
@@ -2232,11 +2232,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_148'/>
 148
 </td>
@@ -2247,26 +2247,29 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  private final Node root;</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>  public IntervalTree(String postfixExpression) throws IllegalArgumentException {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_149'/>
 149
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_149'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_149'>2</a>
 <span>
+1. &#60;init&#62; : negated conditional &rarr; KILLED<br/>
+2. &#60;init&#62; : negated conditional &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    if (postfixExpression == null || postfixExpression.trim().isEmpty()) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_150'/>
 150
 </td>
@@ -2277,7 +2280,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      throw new IllegalArgumentException(&#34;Expression cannot be null or empty&#34;);</span></pre></td></tr>
 
 
 <tr>
@@ -2292,7 +2295,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * Constructs an IntervalTree from a postfix interval expression string.</span></pre></td></tr>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
@@ -2307,11 +2310,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_153'/>
 153
 </td>
@@ -2322,11 +2325,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @param postfixExpression the postfix expression as a space-separated string</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    this.root = parsePostfix(postfixExpression.trim());</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_154'/>
 154
 </td>
@@ -2337,7 +2340,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @throws IllegalArgumentException if the expression is invalid</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>  }</span></pre></td></tr>
 
 
 <tr>
@@ -2352,11 +2355,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_156'/>
 156
 </td>
@@ -2367,29 +2370,26 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>  public IntervalTree(String postfixExpression) throws IllegalArgumentException {</span></pre></td></tr>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_157'/>
 157
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_157'>2</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_157'></a>
 <span>
-1. &#60;init&#62; : negated conditional &rarr; KILLED<br/>
-2. &#60;init&#62; : negated conditional &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>    if (postfixExpression == null || postfixExpression.trim().isEmpty()) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * Parses a postfix interval expression and builds the expression tree.</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_158'/>
 158
 </td>
@@ -2400,7 +2400,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      throw new IllegalArgumentException(&#34;Expression cannot be null or empty&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
 
 
 <tr>
@@ -2415,7 +2415,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @param expression the postfix expression</span></pre></td></tr>
 
 
 <tr>
@@ -2430,11 +2430,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @return the root node of the expression tree</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_161'/>
 161
 </td>
@@ -2445,11 +2445,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>    this.root = parsePostfix(postfixExpression.trim());</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @throws IllegalArgumentException if the expression is invalid</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_162'/>
 162
 </td>
@@ -2460,7 +2460,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>  }</span></pre></td></tr>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
 
 
 <tr>
@@ -2475,11 +2475,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>  private Node parsePostfix(String expression) throws IllegalArgumentException {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_164'/>
 164
 </td>
@@ -2490,11 +2490,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    String[] tokens = expression.split(&#34;\\s+&#34;);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_165'/>
 165
 </td>
@@ -2505,7 +2505,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * Parses a postfix interval expression and builds the expression tree.</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    Stack&#60;Node&#62; stack = new Stack&#60;&#62;();</span></pre></td></tr>
 
 
 <tr>
@@ -2520,11 +2520,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_167'/>
 167
 </td>
@@ -2535,41 +2535,46 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @param expression the postfix expression</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    for (String token : tokens) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_168'/>
 168
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_168'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_168'>1</a>
 <span>
+1. parsePostfix : negated conditional &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @return the root node of the expression tree</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>      if (isOperator(token)) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_169'/>
 169
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_169'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_169'>2</a>
 <span>
+1. parsePostfix : changed conditional boundary &rarr; KILLED<br/>
+2. parsePostfix : negated conditional &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @throws IllegalArgumentException if the expression is invalid</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>        if (stack.size() &#60; 2) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_170'/>
 170
 </td>
@@ -2580,7 +2585,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>          throw new IllegalArgumentException(</span></pre></td></tr>
 
 
 <tr>
@@ -2595,11 +2600,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  private Node parsePostfix(String expression) throws IllegalArgumentException {</span></pre></td></tr>
+<td class=''><pre><span  class=''>              &#34;Invalid expression: insufficient operands for operator &#34; + token);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_172'/>
 172
 </td>
@@ -2610,7 +2615,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>    String[] tokens = expression.split(&#34;\\s+&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
 
 
 <tr>
@@ -2625,11 +2630,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>    Stack&#60;Node&#62; stack = new Stack&#60;&#62;();</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        Node right = stack.pop();</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_174'/>
 174
 </td>
@@ -2640,7 +2645,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        Node left = stack.pop();</span></pre></td></tr>
 
 
 <tr>
@@ -2655,7 +2660,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>    for (String token : tokens) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        stack.push(new OperatorNode(token, left, right));</span></pre></td></tr>
 
 
 <tr>
@@ -2663,16 +2668,14 @@
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_176'/>
 176
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_176'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_176'></a>
 <span>
-1. parsePostfix : negated conditional &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>      if (isOperator(token)) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      } else {</span></pre></td></tr>
 
 
 <tr>
@@ -2687,25 +2690,22 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        // Check if we have enough operands</span></pre></td></tr>
+<td class=''><pre><span  class=''>        // Prse as an interval</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_178'/>
 178
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_178'>2</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_178'></a>
 <span>
-1. parsePostfix : changed conditional boundary &rarr; KILLED<br/>
-2. parsePostfix : negated conditional &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>        if (stack.size() &#60; 2) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>        try {</span></pre></td></tr>
 
 
 <tr>
@@ -2720,11 +2720,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>          throw new IllegalArgumentException(</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>          Interval interval = parseInterval(token);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_180'/>
 180
 </td>
@@ -2735,11 +2735,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>              &#34;Invalid expression: insufficient operands for operator &#34; + token);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>          stack.push(new IntervalNode(interval));</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_181'/>
 181
 </td>
@@ -2750,11 +2750,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        } catch (IllegalArgumentException e) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_182'/>
 182
 </td>
@@ -2765,7 +2765,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        // Pop in reverse order (right first, then left)</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>          throw new IllegalArgumentException(&#34;Invalid interval: &#34; + token);</span></pre></td></tr>
 
 
 <tr>
@@ -2780,11 +2780,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        Node right = stack.pop();</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_184'/>
 184
 </td>
@@ -2795,11 +2795,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        Node left = stack.pop();</span></pre></td></tr>
+<td class=''><pre><span  class=''>      }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_185'/>
 185
 </td>
@@ -2810,11 +2810,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        stack.push(new OperatorNode(token, left, right));</span></pre></td></tr>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_186'/>
 186
 </td>
@@ -2825,7 +2825,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      } else {</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -2840,22 +2840,24 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        // Try to parse as an interval</span></pre></td></tr>
+<td class=''><pre><span  class=''>    // Check that we have exactly one element left (the root)</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_188'/>
 188
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_188'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_188'>1</a>
 <span>
+1. parsePostfix : negated conditional &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>        try {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    if (stack.size() != 1) {</span></pre></td></tr>
 
 
 <tr>
@@ -2863,18 +2865,20 @@
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_189'/>
 189
 </td>
-<td class=''>
+<td class='survived'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_189'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_189'>1</a>
 <span>
+1. parsePostfix : negated conditional &rarr; SURVIVED<br/>
+
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>          Interval interval = parseInterval(token);</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>      if (stack.isEmpty()) {</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='uncovered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_190'/>
 190
 </td>
@@ -2885,11 +2889,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>          stack.push(new IntervalNode(interval));</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        throw new IllegalArgumentException(&#34;Invalid expression: no result&#34;);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_191'/>
 191
 </td>
@@ -2900,7 +2904,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        } catch (IllegalArgumentException e) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>      } else {</span></pre></td></tr>
 
 
 <tr>
@@ -2915,11 +2919,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>          throw new IllegalArgumentException(&#34;Invalid interval: &#34; + token);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        throw new IllegalArgumentException(</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_193'/>
 193
 </td>
@@ -2930,7 +2934,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
+<td class=''><pre><span  class=''>            &#34;Invalid expression: too many operands&#34;);</span></pre></td></tr>
 
 
 <tr>
@@ -2979,56 +2983,54 @@
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_197'/>
 197
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_197'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_197'>1</a>
 <span>
+1. parsePostfix : replaced return value with null for intervals/IntervalTree::parsePostfix &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    // Check that we have exactly one element left (the root)</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    return stack.pop();</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_198'/>
 198
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_198'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_198'></a>
 <span>
-1. parsePostfix : negated conditional &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>    if (stack.size() != 1) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_199'/>
 199
 </td>
-<td class='survived'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_199'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_199'></a>
 <span>
-1. parsePostfix : negated conditional &rarr; SURVIVED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>      if (stack.isEmpty()) {</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='uncovered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_200'/>
 200
 </td>
@@ -3039,7 +3041,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        throw new IllegalArgumentException(&#34;Invalid expression: no result&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
 
 
 <tr>
@@ -3054,11 +3056,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      } else {</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * Parses an interval string in the format &#34;start,end&#34;.</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_202'/>
 202
 </td>
@@ -3069,7 +3071,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        throw new IllegalArgumentException(</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * Supports both positive and negative integers.</span></pre></td></tr>
 
 
 <tr>
@@ -3084,7 +3086,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>            &#34;Invalid expression: too many operands&#34;);</span></pre></td></tr>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
 
 
 <tr>
@@ -3099,7 +3101,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>      }</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @param intervalStr the interval string</span></pre></td></tr>
 
 
 <tr>
@@ -3114,7 +3116,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @return the parsed Interval object</span></pre></td></tr>
 
 
 <tr>
@@ -3129,24 +3131,22 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @throws IllegalArgumentException if the format is invalid</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_207'/>
 207
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_207'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_207'></a>
 <span>
-1. parsePostfix : replaced return value with null for intervals/IntervalTree::parsePostfix &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>    return stack.pop();</span></pre></td></tr>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
 
 
 <tr>
@@ -3161,11 +3161,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+<td class=''><pre><span  class=''>  private Interval parseInterval(String intervalStr) throws IllegalArgumentException {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_209'/>
 209
 </td>
@@ -3176,26 +3176,28 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    int commaIndex = intervalStr.indexOf(&#39;,&#39;);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_210'/>
 210
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_210'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_210'>1</a>
 <span>
+1. parseInterval : negated conditional &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    if (commaIndex == -1) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_211'/>
 211
 </td>
@@ -3206,7 +3208,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * Parses an interval string in the format &#34;start,end&#34;.</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      throw new IllegalArgumentException(&#34;Invalid interval format: &#34; + intervalStr);</span></pre></td></tr>
 
 
 <tr>
@@ -3221,7 +3223,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * Supports both positive and negative integers.</span></pre></td></tr>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
@@ -3236,26 +3238,29 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_214'/>
 214
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_214'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_214'>2</a>
 <span>
+1. parseInterval : Replaced integer addition with subtraction &rarr; KILLED<br/>
+2. parseInterval : negated conditional &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @param intervalStr the interval string</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    if (intervalStr.indexOf(&#39;,&#39;, commaIndex + 1) != -1) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_215'/>
 215
 </td>
@@ -3266,7 +3271,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @return the parsed Interval object</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      throw new IllegalArgumentException(&#34;Invalid interval format: &#34; + intervalStr);</span></pre></td></tr>
 
 
 <tr>
@@ -3281,7 +3286,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @throws IllegalArgumentException if the format is invalid</span></pre></td></tr>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
@@ -3296,11 +3301,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   */</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_218'/>
 218
 </td>
@@ -3311,26 +3316,28 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  private Interval parseInterval(String intervalStr) throws IllegalArgumentException {</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_219'/>
-219
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_219'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>    // Check for basic format - must contain exactly one comma</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    String startStr = intervalStr.substring(0, commaIndex).trim();</span></pre></td></tr>
 
 
 <tr>
 <td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_219'/>
+219
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_219'>1</a>
+<span>
+1. parseInterval : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    String endStr = intervalStr.substring(commaIndex + 1).trim();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_220'/>
 220
 </td>
@@ -3341,7 +3348,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>    int commaIndex = intervalStr.indexOf(&#39;,&#39;);</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -3351,14 +3358,15 @@
 </td>
 <td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_221'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_221'>2</a>
 <span>
 1. parseInterval : negated conditional &rarr; KILLED<br/>
+2. parseInterval : negated conditional &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>    if (commaIndex == -1) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    if (startStr.isEmpty() || endStr.isEmpty()) {</span></pre></td></tr>
 
 
 <tr>
@@ -3418,7 +3426,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    // Check there&#39;s only one comma</span></pre></td></tr>
+<td class=''><pre><span  class=''>    try {</span></pre></td></tr>
 
 
 <tr>
@@ -3426,17 +3434,14 @@
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_226'/>
 226
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_226'>2</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_226'></a>
 <span>
-1. parseInterval : Replaced integer addition with subtraction &rarr; KILLED<br/>
-2. parseInterval : negated conditional &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>    if (intervalStr.indexOf(&#39;,&#39;, commaIndex + 1) != -1) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      int start = Integer.parseInt(startStr);</span></pre></td></tr>
 
 
 <tr>
@@ -3451,26 +3456,28 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      throw new IllegalArgumentException(&#34;Invalid interval format: &#34; + intervalStr);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      int end = Integer.parseInt(endStr);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_228'/>
 228
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_228'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_228'>1</a>
 <span>
+1. parseInterval : replaced return value with null for intervals/IntervalTree::parseInterval &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>      return new Interval(start, end);</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_229'/>
 229
 </td>
@@ -3481,11 +3488,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    } catch (NumberFormatException e) {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_230'/>
 230
 </td>
@@ -3496,11 +3503,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    // Extract start and end parts</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>      throw new IllegalArgumentException(&#34;Invalid interval values: &#34; + intervalStr);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_231'/>
 231
 </td>
@@ -3511,24 +3518,22 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>    String startStr = intervalStr.substring(0, commaIndex).trim();</span></pre></td></tr>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_232'/>
 232
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_232'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_232'></a>
 <span>
-1. parseInterval : Replaced integer addition with subtraction &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>    String endStr = intervalStr.substring(commaIndex + 1).trim();</span></pre></td></tr>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
 
 
 <tr>
@@ -3558,29 +3563,26 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    // Both parts must be non-empty</span></pre></td></tr>
+<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_235'/>
 235
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_235'>2</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_235'></a>
 <span>
-1. parseInterval : negated conditional &rarr; KILLED<br/>
-2. parseInterval : negated conditional &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>    if (startStr.isEmpty() || endStr.isEmpty()) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * Checks if a token is a valid operator.</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_236'/>
 236
 </td>
@@ -3591,7 +3593,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      throw new IllegalArgumentException(&#34;Invalid interval format: &#34; + intervalStr);</span></pre></td></tr>
+<td class=''><pre><span  class=''>   *</span></pre></td></tr>
 
 
 <tr>
@@ -3606,7 +3608,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @param token the token to check</span></pre></td></tr>
 
 
 <tr>
@@ -3621,7 +3623,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>   * @return true if the token is an operator, false otherwise</span></pre></td></tr>
 
 
 <tr>
@@ -3636,11 +3638,11 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    try {</span></pre></td></tr>
+<td class=''><pre><span  class=''>   */</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_240'/>
 240
 </td>
@@ -3651,7 +3653,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      int start = Integer.parseInt(startStr);</span></pre></td></tr>
+<td class=''><pre><span  class=''>  private boolean isOperator(String token) {</span></pre></td></tr>
 
 
 <tr>
@@ -3659,35 +3661,37 @@
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_241'/>
 241
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_241'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_241'>3</a>
 <span>
+1. isOperator : negated conditional &rarr; KILLED<br/>
+2. isOperator : negated conditional &rarr; KILLED<br/>
+3. isOperator : replaced boolean return with true for intervals/IntervalTree::isOperator &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      int end = Integer.parseInt(endStr);</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    return token.equals(&#34;U&#34;) || token.equals(&#34;I&#34;);</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_242'/>
 242
 </td>
-<td class='killed'>
+<td class=''>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_242'>1</a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_242'></a>
 <span>
-1. parseInterval : replaced return value with null for intervals/IntervalTree::parseInterval &rarr; KILLED<br/>
-
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>      return new Interval(start, end);</span></pre></td></tr>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_243'/>
 243
 </td>
@@ -3698,11 +3702,11 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>    } catch (NumberFormatException e) {</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
-<td class='covered'>
+<td class='na'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_244'/>
 244
 </td>
@@ -3713,7 +3717,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>      throw new IllegalArgumentException(&#34;Invalid interval values: &#34; + intervalStr);</span></pre></td></tr>
+<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
 
 
 <tr>
@@ -3728,22 +3732,24 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+<td class=''><pre><span  class=''>  public Interval evaluate() {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_246'/>
 246
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_246'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_246'>1</a>
 <span>
+1. evaluate : replaced return value with null for intervals/IntervalTree::evaluate &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  }</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    return root.evaluate();</span></pre></td></tr>
 
 
 <tr>
@@ -3758,7 +3764,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
 
 
 <tr>
@@ -3773,7 +3779,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>  /**</span></pre></td></tr>
+<td class=''><pre><span  class=''></span></pre></td></tr>
 
 
 <tr>
@@ -3788,7 +3794,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * Checks if a token is a valid operator.</span></pre></td></tr>
+<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
 
 
 <tr>
@@ -3803,22 +3809,24 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   *</span></pre></td></tr>
+<td class=''><pre><span  class=''>  public String textTree() {</span></pre></td></tr>
 
 
 <tr>
-<td class='na'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_251'/>
 251
 </td>
-<td class=''>
+<td class='killed'>
 <span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_251'></a>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_251'>1</a>
 <span>
+1. textTree : replaced return value with &#34;&#34; for intervals/IntervalTree::textTree &rarr; KILLED<br/>
+
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @param token the token to check</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    return root.textTree(&#34;&#34;, true);</span></pre></td></tr>
 
 
 <tr>
@@ -3833,7 +3841,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>   * @return true if the token is an operator, false otherwise</span></pre></td></tr>
+<td class=''><pre><span  class=''>  }</span></pre></td></tr>
 
 
 <tr>
@@ -3844,224 +3852,6 @@
 <td class=''>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_253'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>   */</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_254'/>
-254
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_254'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>  private boolean isOperator(String token) {</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_255'/>
-255
-</td>
-<td class='killed'>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_255'>3</a>
-<span>
-1. isOperator : negated conditional &rarr; KILLED<br/>
-2. isOperator : negated conditional &rarr; KILLED<br/>
-3. isOperator : replaced boolean return with true for intervals/IntervalTree::isOperator &rarr; KILLED<br/>
-
-</span>
-</span>
-</td>
-<td class='covered'><pre><span  class='killed'>    return token.equals(&#34;U&#34;) || token.equals(&#34;I&#34;);</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_256'/>
-256
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_256'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>  }</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_257'/>
-257
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_257'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_258'/>
-258
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_258'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_259'/>
-259
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_259'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>  public Interval evaluate() {</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_260'/>
-260
-</td>
-<td class='killed'>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_260'>1</a>
-<span>
-1. evaluate : replaced return value with null for intervals/IntervalTree::evaluate &rarr; KILLED<br/>
-
-</span>
-</span>
-</td>
-<td class='covered'><pre><span  class='killed'>    return root.evaluate();</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_261'/>
-261
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_261'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>  }</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_262'/>
-262
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_262'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''></span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_263'/>
-263
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_263'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>  @Override</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_264'/>
-264
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_264'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>  public String textTree() {</span></pre></td></tr>
-
-
-<tr>
-<td class='covered'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_265'/>
-265
-</td>
-<td class='killed'>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_265'>1</a>
-<span>
-1. textTree : replaced return value with &#34;&#34; for intervals/IntervalTree::textTree &rarr; KILLED<br/>
-
-</span>
-</span>
-</td>
-<td class='covered'><pre><span  class='killed'>    return root.textTree(&#34;&#34;, true);</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_266'/>
-266
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_266'></a>
-<span>
-</span>
-</span>
-</td>
-<td class=''><pre><span  class=''>  }</span></pre></td></tr>
-
-
-<tr>
-<td class='na'>
-<a name='org.pitest.mutationtest.report.html.SourceFile@1601e47_267'/>
-267
-</td>
-<td class=''>
-<span class='pop'>
-<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_267'></a>
 <span>
 </span>
 </span>
@@ -4109,7 +3899,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_99'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluate<br/><b>Killed by : </b>IntervalTreeTest.testVeryLongExpression(IntervalTreeTest)</span></span> replaced return value with null for intervals/IntervalTree$OperatorNode::evaluate &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluate<br/><b>Killed by : </b>IntervalTreeTest.testWhitespaceHandling(IntervalTreeTest)</span></span> replaced return value with null for intervals/IntervalTree$OperatorNode::evaluate &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -4119,97 +3909,127 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_101'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluate<br/><b>Killed by : </b>IntervalTreeTest.testChainedIntersections(IntervalTreeTest)</span></span> replaced return value with null for intervals/IntervalTree$OperatorNode::evaluate &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluate<br/><b>Killed by : </b>IntervalTreeTest.testNoIntersection(IntervalTreeTest)</span></span> replaced return value with null for intervals/IntervalTree$OperatorNode::evaluate &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_125'>125</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_121'>121</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_125'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_121'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>textTree<br/><b>Killed by : </b>IntervalTreeTest.testExactTextTreeFormat(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>textTree<br/><b>Killed by : </b>IntervalTreeTest.testSimpleIntersection(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_139'>139</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_131'>131</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_139'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_131'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>textTree<br/><b>Killed by : </b>IntervalTreeTest.testExactTextTreeFormat(IntervalTreeTest)</span></span> replaced return value with &#34;&#34; for intervals/IntervalTree$OperatorNode::textTree &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>textTree<br/><b>Killed by : </b>IntervalTreeTest.testSimpleIntersection(IntervalTreeTest)</span></span> replaced return value with &#34;&#34; for intervals/IntervalTree$OperatorNode::textTree &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_144'>144</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_136'>136</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_144'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_136'/> 
 
 <p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getHeight<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getHeight<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for intervals/IntervalTree$OperatorNode::getHeight &rarr; NO_COVERAGE</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_157'>157</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_149'>149</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_157'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_149'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>IntervalTreeTest.testNullExpression(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>IntervalTreeTest.testIntervalTreeEmptyChecks(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_176'>176</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_168'>168</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_176'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_168'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parsePostfix<br/><b>Killed by : </b>IntervalTreeTest.testParseIntervalExactValidation(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parsePostfix<br/><b>Killed by : </b>IntervalTreeTest.testParseIntervalCommaChecks(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_178'>178</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_169'>169</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_178'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_169'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parsePostfix<br/><b>Killed by : </b>IntervalTreeTest.testVeryLongExpression(IntervalTreeTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>parsePostfix<br/><b>Killed by : </b>IntervalTreeTest.testOnlyOperator(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parsePostfix<br/><b>Killed by : </b>IntervalTreeTest.testNoIntersection(IntervalTreeTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>parsePostfix<br/><b>Killed by : </b>IntervalTreeTest.testOnlyOperator(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_198'>198</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_188'>188</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_198'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_188'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parsePostfix<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_199'>199</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_189'>189</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_199'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_189'/> 
 
 <p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parsePostfix<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_207'>207</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_197'>197</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_207'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_197'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parsePostfix<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> replaced return value with null for intervals/IntervalTree::parsePostfix &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_210'>210</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_210'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testInvalidIntervalFormat2(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_214'>214</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_214'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_219'>219</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_219'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testInvalidIntervalFormat3(IntervalTreeTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
@@ -4219,75 +4039,45 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_221'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testInvalidIntervalFormat1(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_226'>226</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_226'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_232'>232</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_232'/> 
-
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testInvalidIntervalFormat4(IntervalTreeTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
-</td>
-</tr>
-<tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_235'>235</a></td> 
-<td></td>
-<td>
-
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_235'/> 
-
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_242'>242</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_228'>228</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_242'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_228'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>parseInterval<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> replaced return value with null for intervals/IntervalTree::parseInterval &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_255'>255</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_241'>241</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_255'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_241'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isOperator<br/><b>Killed by : </b>IntervalTreeTest.testParseIntervalExactValidation(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isOperator<br/><b>Killed by : </b>IntervalTreeTest.testParseIntervalExactValidation(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isOperator<br/><b>Killed by : </b>IntervalTreeTest.testParseIntervalExactValidation(IntervalTreeTest)</span></span> replaced boolean return with true for intervals/IntervalTree::isOperator &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isOperator<br/><b>Killed by : </b>IntervalTreeTest.testParseIntervalCommaChecks(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isOperator<br/><b>Killed by : </b>IntervalTreeTest.testParseIntervalCommaChecks(IntervalTreeTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isOperator<br/><b>Killed by : </b>IntervalTreeTest.testParseIntervalCommaChecks(IntervalTreeTest)</span></span> replaced boolean return with true for intervals/IntervalTree::isOperator &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_260'>260</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_246'>246</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_260'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_246'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluate<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> replaced return value with null for intervals/IntervalTree::evaluate &rarr; KILLED</p> 
 </td>
 </tr>
 <tr>
-<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_265'>265</a></td> 
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1601e47_251'>251</a></td> 
 <td></td>
 <td>
 
-<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_265'/> 
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1601e47_251'/> 
 
 <p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>textTree<br/><b>Killed by : </b>IntervalTreeTest.testSingleInterval(IntervalTreeTest)</span></span> replaced return value with &#34;&#34; for intervals/IntervalTree::textTree &rarr; KILLED</p> 
 </td>
@@ -4314,7 +4104,7 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>IntervalTreeTest.testMultipleOperatorsNoOperands(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testOnlyOperator(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidIntervalFormat1(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidIntervalFormat4(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testParseIntervalExactValidation(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidIntervalFormat5(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidIntervalFormat3(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testInvalidIntervalFormat2(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testParseIntervalCommaChecks(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidIntervalOrder(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidIntervalValues1(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testInvalidIntervalValues2(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testTooFewOperandsComplex(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testMixedInvalidTokens(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testTooFewOperandsForOperator(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidOperator(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testSingleInterval(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testTooManyOperands(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testZeroInterval(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testWhitespaceHandling(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testIntervalFormatVariations(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testMinValueHandling(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testChainedUnions(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testVeryLongExpression(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testChainedIntersections(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testNoIntersection(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testBoundaryValues(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testLargeIntervals(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testVeryLargeNegativeInterval(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testDeeplyNestedExpression(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testExamplesFromAssignment(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testZeroLengthInterval(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testMixedOperations(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testMixedSignIntervals(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testAlternatingOperations(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testIntervalTreeOperatorSwitch(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testIdenticalIntervals(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testCompletelyContainedIntervals(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testExactTextTreeFormat(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testAllOperators(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testNegativeIntervals(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testTouchingIntervals(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testIntervalOperatorExactBehavior(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testComplexExpression2(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testComplexExpression1(IntervalTreeTest) (2 ms)</li><li>IntervalTreeTest.testSimpleIntersection(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testSimpleUnion(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testComplexTextTree(IntervalTreeTest) (5 ms)</li><li>IntervalTreeTest.testAdjacentIntervals(IntervalTreeTest) (121 ms)</li><li>IntervalTreeTest.testIntervalTreeEmptyChecks(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testWhitespaceOnlyExpression(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testEmptyExpression(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testNullExpression(IntervalTreeTest) (0 ms)</li>
+<li>IntervalTreeTest.testInvalidIntervalFormat2(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testOnlyOperator(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testInvalidIntervalFormat3(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidIntervalFormat1(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testInvalidIntervalValues2(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidIntervalOrder(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidIntervalValues1(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testParseIntervalCommaChecks(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testTooFewOperandsForOperator(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testTooFewOperandsComplex(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testSingleInterval(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testTooManyOperands(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testInvalidOperator(IntervalTreeTest) (2 ms)</li><li>IntervalTreeTest.testNoIntersection(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testZeroLengthInterval(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testWhitespaceHandling(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testComplexExpression(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testMinValueHandling(IntervalTreeTest) (1 ms)</li><li>IntervalTreeTest.testTouchingIntervals(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testIntervalOperatorExactBehavior(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testSimpleIntersection(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testSimpleUnion(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testNegativeIntervals(IntervalTreeTest) (2 ms)</li><li>IntervalTreeTest.testComplexTextTree(IntervalTreeTest) (10 ms)</li><li>IntervalTreeTest.testChainedOperations(IntervalTreeTest) (88 ms)</li><li>IntervalTreeTest.testIntervalTreeEmptyChecks(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testNullExpression(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testWhitespaceOnlyExpression(IntervalTreeTest) (0 ms)</li><li>IntervalTreeTest.testEmptyExpression(IntervalTreeTest) (1 ms)</li>
 </ul>
 
 <br/>

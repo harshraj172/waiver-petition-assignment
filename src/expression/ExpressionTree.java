@@ -73,7 +73,6 @@ public class ExpressionTree implements Expression {
 
     @Override
     String infix() {
-      // Format the number appropriately
       if (value == Math.floor(value) && !Double.isInfinite(value)) {
         return String.format("%.1f", value);
       }
@@ -91,7 +90,7 @@ public class ExpressionTree implements Expression {
 
     @Override
     String textTree(String prefix, boolean isLast) {
-      // Just return the value for leaf nodes
+      // return the value for leaf nodes
       if (value == Math.floor(value) && !Double.isInfinite(value)) {
         return String.format("%.1f", value);
       }
@@ -188,8 +187,6 @@ public class ExpressionTree implements Expression {
       String rightResult = right.textTree(prefix + "    ", true);
       result.append(rightResult);
 
-      // Don't add trailing newline - parent will handle it
-
       return result.toString();
     }
 
@@ -238,7 +235,7 @@ public class ExpressionTree implements Expression {
         Node left = stack.pop();
         stack.push(new OperatorNode(token, left, right));
       } else {
-        // Try to parse as a number
+        // Parse as a number
         try {
           double value = Double.parseDouble(token);
           stack.push(new NumberNode(value));
@@ -248,7 +245,6 @@ public class ExpressionTree implements Expression {
       }
     }
 
-    // Check that we have exactly one element left (the root)
     if (stack.size() != 1) {
       if (stack.isEmpty()) {
         throw new IllegalArgumentException("Invalid expression: no result");

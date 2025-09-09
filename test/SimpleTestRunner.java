@@ -22,13 +22,10 @@ public class SimpleTestRunner {
     System.out.println("Running tests for ExpressionTree and IntervalTree...\n");
     System.out.println("=" + repeat("=", 49));
 
-    // Test ExpressionTree
     testExpressionTree();
 
-    // Test IntervalTree
     testIntervalTree();
 
-    // Print summary
     System.out.println("\n" + repeat("=", 50));
     System.out.println("FINAL RESULTS:");
     System.out.println(repeat("=", 50));
@@ -49,7 +46,6 @@ public class SimpleTestRunner {
     System.out.println("\nTesting ExpressionTree:");
     System.out.println(repeat("-", 40));
 
-    // Test simple operations
     test("Simple addition (1 2 +)", () -> {
       Expression tree = new ExpressionTree("1 2 +");
       return Math.abs(tree.evaluate() - 3.0) < 0.001
@@ -78,7 +74,6 @@ public class SimpleTestRunner {
           && tree.schemeExpression().equals("( / 10.0 2.0 )");
     });
 
-    // Test complex expressions
     test("Complex expression (1.2 5.4 + -4.5 * -)", () -> {
       Expression tree = new ExpressionTree("1.2 5.4 + -4.5 * -");
       double val1 = 1.2 + 5.4; // 6.6
@@ -93,7 +88,6 @@ public class SimpleTestRunner {
       return Math.abs(tree.evaluate() - expected) < 0.001;
     });
 
-    // Test single number
     test("Single number (42)", () -> {
       Expression tree = new ExpressionTree("42");
       return Math.abs(tree.evaluate() - 42.0) < 0.001
@@ -101,20 +95,17 @@ public class SimpleTestRunner {
           && tree.schemeExpression().equals("42.0");
     });
 
-    // Test negative numbers
     test("Negative numbers (3 -2 +)", () -> {
       Expression tree = new ExpressionTree("3 -2 +");
       return Math.abs(tree.evaluate() - 1.0) < 0.001;
     });
 
-    // Test text tree formatting
     test("Text tree formatting", () -> {
       Expression tree = new ExpressionTree("1 2 +");
       String expected = "+\n|\n|\n|___1.0\n|\n|___2.0";
       return tree.textTree().equals(expected);
     });
 
-    // Test error handling
     test("Division by zero handling", () -> {
       try {
         Expression tree = new ExpressionTree("5 0 /");
@@ -164,7 +155,7 @@ public class SimpleTestRunner {
     test("Empty expression handling", () -> {
       try {
         new ExpressionTree("");
-        return false; // Should have thrown exception
+        return false;
       } catch (IllegalArgumentException e) {
         return true;
       }
@@ -175,7 +166,6 @@ public class SimpleTestRunner {
     System.out.println("\n\nTesting IntervalTree:");
     System.out.println(repeat("-", 40));
 
-    // Test simple operations
     test("Simple union (1,4 2,5 U)", () -> {
       Intervals tree = new IntervalTree("1,4 2,5 U");
       Interval result = tree.evaluate();
@@ -194,7 +184,6 @@ public class SimpleTestRunner {
       return result.equals(new Interval(Integer.MIN_VALUE, Integer.MIN_VALUE));
     });
 
-    // Test complex expressions from assignment
     test("Complex: -4,4 2,5 U -1,4 I", () -> {
       Intervals tree = new IntervalTree("-4,4 2,5 U -1,4 I");
       Interval result = tree.evaluate();
@@ -213,30 +202,26 @@ public class SimpleTestRunner {
       return result.equals(new Interval(4, 4));
     });
 
-    // Test single interval
     test("Single interval (5,10)", () -> {
       Intervals tree = new IntervalTree("5,10");
       return tree.evaluate().equals(new Interval(5, 10));
     });
 
-    // Test negative intervals
     test("Negative intervals (-5,-2 -3,1 U)", () -> {
       Intervals tree = new IntervalTree("-5,-2 -3,1 U");
       return tree.evaluate().equals(new Interval(-5, 1));
     });
 
-    // Test text tree formatting
     test("Text tree formatting", () -> {
       Intervals tree = new IntervalTree("1,2 3,4 U");
       String expected = "U\n|\n|\n|___1,2\n|\n|___3,4";
       return tree.textTree().equals(expected);
     });
 
-    // Test error handling
     test("Invalid interval format (1-2 3,4 U)", () -> {
       try {
         new IntervalTree("1-2 3,4 U");
-        return false; // Should have thrown exception
+        return false;
       } catch (IllegalArgumentException e) {
         return true;
       }
@@ -245,7 +230,7 @@ public class SimpleTestRunner {
     test("Invalid interval values (a,b 1,2 U)", () -> {
       try {
         new IntervalTree("a,b 1,2 U");
-        return false; // Should have thrown exception
+        return false;
       } catch (IllegalArgumentException e) {
         return true;
       }
@@ -254,7 +239,7 @@ public class SimpleTestRunner {
     test("Too few operands (1,2 U)", () -> {
       try {
         new IntervalTree("1,2 U");
-        return false; // Should have thrown exception
+        return false;
       } catch (IllegalArgumentException e) {
         return true;
       }
@@ -263,7 +248,7 @@ public class SimpleTestRunner {
     test("Too many operands (1,2 3,4 5,6 U)", () -> {
       try {
         new IntervalTree("1,2 3,4 5,6 U");
-        return false; // Should have thrown exception
+        return false;
       } catch (IllegalArgumentException e) {
         return true;
       }
@@ -272,7 +257,7 @@ public class SimpleTestRunner {
     test("Invalid operator (1,2 3,4 +)", () -> {
       try {
         new IntervalTree("1,2 3,4 +");
-        return false; // Should have thrown exception
+        return false;
       } catch (IllegalArgumentException e) {
         return true;
       }
@@ -281,7 +266,7 @@ public class SimpleTestRunner {
     test("Null expression handling", () -> {
       try {
         new IntervalTree(null);
-        return false; // Should have thrown exception
+        return false;
       } catch (IllegalArgumentException e) {
         return true;
       }
@@ -290,7 +275,7 @@ public class SimpleTestRunner {
     test("Empty expression handling", () -> {
       try {
         new IntervalTree("");
-        return false; // Should have thrown exception
+        return false;
       } catch (IllegalArgumentException e) {
         return true;
       }
@@ -299,7 +284,7 @@ public class SimpleTestRunner {
     test("Invalid interval order (5,2 3,4 U)", () -> {
       try {
         new IntervalTree("5,2 3,4 U");
-        return false; // Should have thrown exception
+        return false;
       } catch (IllegalArgumentException e) {
         return true;
       }

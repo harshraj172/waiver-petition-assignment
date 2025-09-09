@@ -100,7 +100,7 @@ public class IntervalTree implements Intervals {
         case "I":
           return leftInterval.intersect(rightInterval);
         default:
-          // This should never happen if isOperator is correct
+          // should never happen if isOperator is correct
           throw new IllegalArgumentException("Unknown operator: " + operator);
       }
     }
@@ -109,32 +109,24 @@ public class IntervalTree implements Intervals {
     String textTree(String prefix, boolean isLast) {
       StringBuilder result = new StringBuilder();
 
-      // Add the operator
       result.append(operator).append("\n");
 
-      // Add the connecting lines
       result.append(prefix).append("|\n");
       result.append(prefix).append("|\n");
 
-      // Add the left child with its prefix
       result.append(prefix).append("|___");
       String leftResult = left.textTree(prefix + "|   ", false);
       result.append(leftResult);
 
-      // Always add newline after left child
       if (!leftResult.endsWith("\n")) {
         result.append("\n");
       }
 
-      // Add spacing line before right child
       result.append(prefix).append("|\n");
 
-      // Add the right child
       result.append(prefix).append("|___");
       String rightResult = right.textTree(prefix + "    ", true);
       result.append(rightResult);
-
-      // Don't add trailing newline - parent will handle it
 
       return result.toString();
     }
@@ -174,17 +166,15 @@ public class IntervalTree implements Intervals {
 
     for (String token : tokens) {
       if (isOperator(token)) {
-        // Check if we have enough operands
         if (stack.size() < 2) {
           throw new IllegalArgumentException(
               "Invalid expression: insufficient operands for operator " + token);
         }
-        // Pop in reverse order (right first, then left)
         Node right = stack.pop();
         Node left = stack.pop();
         stack.push(new OperatorNode(token, left, right));
       } else {
-        // Try to parse as an interval
+        // Prse as an interval
         try {
           Interval interval = parseInterval(token);
           stack.push(new IntervalNode(interval));
@@ -216,22 +206,18 @@ public class IntervalTree implements Intervals {
    * @throws IllegalArgumentException if the format is invalid
    */
   private Interval parseInterval(String intervalStr) throws IllegalArgumentException {
-    // Check for basic format - must contain exactly one comma
     int commaIndex = intervalStr.indexOf(',');
     if (commaIndex == -1) {
       throw new IllegalArgumentException("Invalid interval format: " + intervalStr);
     }
 
-    // Check there's only one comma
     if (intervalStr.indexOf(',', commaIndex + 1) != -1) {
       throw new IllegalArgumentException("Invalid interval format: " + intervalStr);
     }
 
-    // Extract start and end parts
     String startStr = intervalStr.substring(0, commaIndex).trim();
     String endStr = intervalStr.substring(commaIndex + 1).trim();
 
-    // Both parts must be non-empty
     if (startStr.isEmpty() || endStr.isEmpty()) {
       throw new IllegalArgumentException("Invalid interval format: " + intervalStr);
     }
