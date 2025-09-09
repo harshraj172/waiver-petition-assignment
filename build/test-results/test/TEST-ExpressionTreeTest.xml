@@ -1,57 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ExpressionTreeTest" tests="51" skipped="0" failures="0" errors="0" timestamp="2025-09-08T22:57:26" hostname="harsh" time="0.182">
+<testsuite name="ExpressionTreeTest" tests="64" skipped="0" failures="0" errors="0" timestamp="2025-09-09T12:37:19" hostname="harsh" time="0.158">
   <properties/>
-  <testcase name="testInvalidOperator" classname="ExpressionTreeTest" time="0.09"/>
-  <testcase name="testBoundaryConditionsForOperators" classname="ExpressionTreeTest" time="0.018"/>
+  <testcase name="testInvalidOperator" classname="ExpressionTreeTest" time="0.076"/>
+  <testcase name="testBoundaryConditionsForOperators" classname="ExpressionTreeTest" time="0.015"/>
   <testcase name="testTooFewOperandsForOperator" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testSimpleMultiplication" classname="ExpressionTreeTest" time="0.043"/>
+  <testcase name="testSimpleMultiplication" classname="ExpressionTreeTest" time="0.03"/>
   <testcase name="testOnlyOperator" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testScientificNotation" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testNumberNodeInfinityCheck" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testSingleNumber" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testScientificNotation" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testNumberNodeInfinityCheck" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testSingleNumber" classname="ExpressionTreeTest" time="0.001"/>
   <testcase name="testDivisionByZeroComplex" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testVeryLongExpression" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testSimpleAddition" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testTooManyOperands" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testMixedInvalidTokens" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testFractionalDivision" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testVeryPreciseDecimals" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testVeryLongExpression" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testSimpleAddition" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testTooManyOperands" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testCriticalMutationPoints" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testMixedInvalidTokens" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testFractionalDivision" classname="ExpressionTreeTest" time="0.001"/>
   <testcase name="testParsePostfixStackValidation" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testNullAndEmptyValidation" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testNullAndEmptyValidation" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testNumberFormattingBoundaryConditions" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testAllNumberNodeMethods" classname="ExpressionTreeTest" time="0.006"/>
   <testcase name="testEmptyExpression" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testNullExpression" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testAllOperators" classname="ExpressionTreeTest" time="0.001"/>
   <testcase name="testDeeplyNestedExpression" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testMultipleOperatorsNoOperands" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testSimpleSubtraction" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testConditionalBoundaries" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testConditionalBoundaries" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testReturnPathCoverage" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testWhitespaceHandling" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testMutationKillerComprehensive" classname="ExpressionTreeTest" time="0.001"/>
   <testcase name="testWhitespaceOnlyExpression" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testDecimalNumbers" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testDecimalNumbers" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testTextTreeExactFormat" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testWholeNumberCondition" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testComplexTextTree" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testSimpleDivision" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testOperatorMutations" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testFormattingConsistencyAcrossMethods" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testComplexTextTree" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testSimpleDivision" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testOperatorMutations" classname="ExpressionTreeTest" time="0.001"/>
   <testcase name="testOperatorPrecedenceInPostfix" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testNegativeDivision" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testChainedOperations" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testArithmeticBoundaries" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testChainedOperations" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testArithmeticBoundaries" classname="ExpressionTreeTest" time="0.001"/>
   <testcase name="testDivisionByZero" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testNegativeNumber" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testExactStringComparisons" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testVerySmallNumbers" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testLargeNumbers" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testFloatFormattingPrecision" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testExactStringComparisons" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testVerySmallNumbers" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testLargeNumbers" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testIntegerFormattingPrecision" classname="ExpressionTreeTest" time="0.004"/>
   <testcase name="testNegativeNumbersInOperation" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testStringFormatVsValueOf" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testZeroVariations" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testStackSizeValidation" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testZeroInOperations" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testZeroInOperations" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testFloorConditionMutations" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testInvalidToken" classname="ExpressionTreeTest" time="0.001"/>
   <testcase name="testOperatorNodeDefaultCase" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testComplexExpression1" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testComplexExpression2" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testComplexExpression3" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testComplexExpression1" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testComplexExpression2" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testComplexExpression3" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testComplexExpression4" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testTooFewOperandsComplex" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testTooFewOperandsComplex" classname="ExpressionTreeTest" time="0.0"/>
   <testcase name="testIsOperatorAllCases" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testEqualityConditionMutation" classname="ExpressionTreeTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

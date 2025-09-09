@@ -6,8 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Comprehensive JUnit 4 tests for ExpressionTree implementation.
- * Designed to achieve 100% code coverage and pass PIT mutation testing.
+ * JUnit 4 tests for ExpressionTree implementation.
  */
 public class ExpressionTreeTest {
 
@@ -617,5 +616,287 @@ public class ExpressionTreeTest {
 
     Expression e4 = new ExpressionTree("4.0000001");
     assertEquals("4.0000001", e4.infix());
+  }
+
+  @Test
+  public void testNumberFormattingBoundaryConditions() {
+    // Test exact integer values - these MUST format with .0
+    Expression tree1 = new ExpressionTree("1.0");
+    assertEquals("1.0", tree1.infix());
+    assertEquals("1.0", tree1.schemeExpression());
+    assertEquals("1.0", tree1.textTree());
+
+    Expression tree2 = new ExpressionTree("2");
+    assertEquals("2.0", tree2.infix());
+    assertEquals("2.0", tree2.schemeExpression());
+    assertEquals("2.0", tree2.textTree());
+
+    Expression tree3 = new ExpressionTree("100");
+    assertEquals("100.0", tree3.infix());
+    assertEquals("100.0", tree3.schemeExpression());
+    assertEquals("100.0", tree3.textTree());
+
+    // Test non-integer values - these MUST NOT format with .0
+    Expression tree4 = new ExpressionTree("1.1");
+    assertEquals("1.1", tree4.infix());
+    assertEquals(false, "1.0".equals(tree4.infix()));
+    assertEquals("1.1", tree4.schemeExpression());
+    assertEquals("1.1", tree4.textTree());
+
+    Expression tree5 = new ExpressionTree("2.999999");
+    assertEquals("2.999999", tree5.infix());
+    assertEquals(false, "3.0".equals(tree5.infix()));
+    assertEquals("2.999999", tree5.schemeExpression());
+    assertEquals("2.999999", tree5.textTree());
+
+    // Test very small decimal differences
+    Expression tree6 = new ExpressionTree("1.0000000001");
+    assertEquals("1.0000000001", tree6.infix());
+    assertEquals(false, "1.0".equals(tree6.infix()));
+
+    Expression tree7 = new ExpressionTree("0.9999999999");
+    assertEquals("0.9999999999", tree7.infix());
+    assertEquals(false, "1.0".equals(tree7.infix()));
+  }
+
+  @Test
+  public void testFloorConditionMutations() {
+    // Test that Math.floor is being used correctly
+    // If Math.floor is removed or changed, these should fail
+
+    // Test integer that should use %.1f format
+    Expression intExpr = new ExpressionTree("5");
+    String intInfix = intExpr.infix();
+    assertEquals("5.0", intInfix);
+    assertEquals(false, "5".equals(intInfix));
+    assertEquals(false, "5.00".equals(intInfix));
+
+    // Test float that should use String.valueOf
+    Expression floatExpr = new ExpressionTree("5.5");
+    String floatInfix = floatExpr.infix();
+    assertEquals("5.5", floatInfix);
+    assertEquals(false, "5.0".equals(floatInfix));
+    assertEquals(false, "6.0".equals(floatInfix));
+
+    // Test negative integer
+    Expression negIntExpr = new ExpressionTree("-10");
+    assertEquals("-10.0", negIntExpr.infix());
+
+    // Test negative float
+    Expression negFloatExpr = new ExpressionTree("-10.7");
+    assertEquals("-10.7", negFloatExpr.infix());
+  }
+
+  @Test
+  public void testEqualityConditionMutation() {
+    // Test the == vs != mutation
+    // These tests ensure that == is the correct operator
+
+    // For value == Math.floor(value), test edge cases
+    Expression e1 = new ExpressionTree("3.0");
+    assertEquals("3.0", e1.infix()); // Should use %.1f format
+
+    Expression e2 = new ExpressionTree("3.00000000001");
+    assertEquals(false, "3.0".equals(e2.infix())); // Should NOT use %.1f format
+    assertEquals("3.00000000001", e2.infix());
+
+    Expression e3 = new ExpressionTree("2.99999999999");
+    assertEquals(false, "3.0".equals(e3.infix())); // Should NOT use %.1f format
+    assertEquals("2.99999999999", e3.infix());
+  }
+
+  @Test
+  public void testStringFormatVsValueOf() {
+    // Ensure String.format and String.valueOf return different results
+    // This kills mutations that swap these methods
+
+    // Integer should use String.format("%.1f", value)
+    Expression intTree = new ExpressionTree("42");
+    String intResult = intTree.infix();
+    assertEquals(4, intResult.length()); // "42.0" is 4 chars
+    assertEquals(true, intResult.endsWith(".0"));
+
+    // Float should use String.valueOf(value)
+    Expression floatTree = new ExpressionTree("42.123");
+    String floatResult = floatTree.infix();
+    assertEquals("42.123", floatResult);
+    assertEquals(false, floatResult.endsWith(".0"));
+  }
+
+  @Test
+  public void testAllNumberNodeMethods() {
+    // Test that all three methods (infix, schemeExpression, textTree)
+    // use the same formatting logic
+
+    double[] testValues = {0.0, 1.0, -1.0, 1.5, -1.5, 100.0, 0.1, 0.00001};
+
+    for (double value : testValues) {
+      Expression tree = new ExpressionTree(String.valueOf(value));
+
+      String infix = tree.infix();
+      String scheme = tree.schemeExpression();
+      String textTree = tree.textTree();
+
+      // All three should produce the same output for a single number
+      assertEquals("infix and scheme should match for " + value, infix, scheme);
+      assertEquals("scheme and textTree should match for " + value, scheme, textTree);
+
+      // Verify the formatting rules
+      if (value == Math.floor(value)) {
+        // Should end with .0
+        assertEquals("Integer value " + value + " should end with .0",
+            true, infix.endsWith(".0"));
+      } else {
+        // Should not artificially add .0
+        assertEquals("Non-integer value " + value + " should not end with .0",
+            false, infix.endsWith(".0"));
+      }
+    }
+  }
+
+  @Test
+  public void testVeryPreciseDecimals() {
+    // Test numbers with many decimal places
+    Expression tree1 = new ExpressionTree("3.14159265358979323846");
+    String result1 = tree1.infix();
+    assertEquals("3.141592653589793", result1); // Java double precision limit
+
+    Expression tree2 = new ExpressionTree("1.000000000000001");
+    String result2 = tree2.infix();
+    assertEquals("1.000000000000001", result2);
+    assertEquals(false, "1.0".equals(result2));
+  }
+
+  @Test
+  public void testZeroVariations() {
+    // Test different representations of zero
+    Expression tree1 = new ExpressionTree("0");
+    assertEquals("0.0", tree1.infix());
+
+    Expression tree2 = new ExpressionTree("0.0");
+    assertEquals("0.0", tree2.infix());
+
+    Expression tree3 = new ExpressionTree("-0.0");
+    assertEquals("-0.0", tree3.infix());
+
+    Expression tree4 = new ExpressionTree("0.00000");
+    assertEquals("0.0", tree4.infix());
+  }
+
+  @Test
+  public void testReturnPathCoverage() {
+    // Explicitly test that each return path is taken
+
+    // Path 1: Integer value -> String.format("%.1f", value)
+    Expression intPath = new ExpressionTree("7");
+    assertEquals("7.0", intPath.infix());
+    assertEquals("7.0", intPath.schemeExpression());
+    assertEquals("7.0", intPath.textTree());
+
+    // Path 2: Non-integer value -> String.valueOf(value)
+    Expression floatPath = new ExpressionTree("7.5");
+    assertEquals("7.5", floatPath.infix());
+    assertEquals("7.5", floatPath.schemeExpression());
+    assertEquals("7.5", floatPath.textTree());
+
+    // Verify these are different code paths by checking exact format
+    assertEquals(false, "7.5000000000".equals(floatPath.infix()));
+    assertEquals(false, "7".equals(intPath.infix()));
+  }
+
+  @Test
+  public void testMutationKillerComprehensive() {
+    // Comprehensive test to ensure mutations are killed
+
+    // Test 1: Mutation of == to !=
+    Expression eq1 = new ExpressionTree("10.0");
+    assertEquals("10.0", eq1.infix()); // Would be "10.0" with ==, but "10.0" with != is wrong
+
+    Expression eq2 = new ExpressionTree("10.1");
+    assertEquals("10.1", eq2.infix()); // Would be "10.1" with ==, different with !=
+
+    // Test 2: Removal of Math.floor
+    Expression floor1 = new ExpressionTree("5.9");
+    assertEquals(false, "5.0".equals(floor1.infix())); // Without floor check, might format wrong
+    assertEquals("5.9", floor1.infix());
+
+    // Test 3: Removal of !Double.isInfinite
+    // Hard to test directly, but the condition should be there
+    Expression finite = new ExpressionTree("123");
+    assertEquals("123.0", finite.infix());
+
+    // Test 4: Wrong format string
+    Expression fmt1 = new ExpressionTree("8");
+    String fmt1Result = fmt1.infix();
+    assertEquals(true, fmt1Result.matches("\\d+\\.\\d"));
+    assertEquals("8.0", fmt1Result);
+  }
+
+  @Test
+  public void testIntegerFormattingPrecision() {
+    // Specifically test that integers always get .0 appended
+    for (int i = -10; i <= 10; i++) {
+      Expression tree = new ExpressionTree(String.valueOf(i));
+      String result = tree.infix();
+      assertEquals(i + ".0", result);
+
+      // Also test in scheme and textTree
+      assertEquals(i + ".0", tree.schemeExpression());
+      assertEquals(i + ".0", tree.textTree());
+    }
+  }
+
+  @Test
+  public void testFloatFormattingPrecision() {
+    // Test that floats keep their exact representation
+    double[] floats = {1.1, 1.01, 1.001, 1.0001, 1.00001};
+    for (double f : floats) {
+      Expression tree = new ExpressionTree(String.valueOf(f));
+      String result = tree.infix();
+      assertEquals(String.valueOf(f), result);
+
+      // Should NOT be formatted as integer
+      assertEquals(false, result.endsWith(".0"));
+    }
+  }
+
+  @Test
+  public void testFormattingConsistencyAcrossMethods() {
+    // Ensure all three methods use the same formatting logic
+    String[] inputs = {"5", "5.0", "5.5", "-10", "-10.0", "-10.5", "0", "0.0"};
+
+    for (String input : inputs) {
+      Expression tree = new ExpressionTree(input);
+      String infix = tree.infix();
+      String scheme = tree.schemeExpression();
+      String text = tree.textTree();
+
+      // All three should be identical for a single number
+      assertEquals("Methods should agree for " + input, infix, scheme);
+      assertEquals("Methods should agree for " + input, scheme, text);
+    }
+  }
+
+  @Test
+  public void testCriticalMutationPoints() {
+    // Target specific mutation points that PIT identifies
+
+    // Test Math.floor(value) == value (not !=)
+    Expression integerExpr = new ExpressionTree("9");
+    assertEquals("9.0", integerExpr.infix()); // Must be 9.0, not 9
+
+    Expression floatExpr = new ExpressionTree("9.1");
+    assertEquals("9.1", floatExpr.infix()); // Must be 9.1, not 9.0
+
+    // Test that both branches are taken
+    Expression branch1 = new ExpressionTree("100");
+    String r1 = branch1.infix();
+    assertEquals(true, r1.contains("."));
+    assertEquals("100.0", r1);
+
+    Expression branch2 = new ExpressionTree("100.1");
+    String r2 = branch2.infix();
+    assertEquals(false, r2.equals("100.0"));
+    assertEquals("100.1", r2);
   }
 }

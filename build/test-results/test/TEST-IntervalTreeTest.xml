@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="IntervalTreeTest" tests="61" skipped="0" failures="0" errors="0" timestamp="2025-09-08T22:57:26" hostname="harsh" time="0.142">
+<testsuite name="IntervalTreeTest" tests="61" skipped="0" failures="0" errors="0" timestamp="2025-09-09T12:37:19" hostname="harsh" time="0.096">
   <properties/>
-  <testcase name="testSimpleUnion" classname="IntervalTreeTest" time="0.099"/>
-  <testcase name="testBoundaryValues" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testIdenticalIntervals" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testSimpleUnion" classname="IntervalTreeTest" time="0.081"/>
+  <testcase name="testBoundaryValues" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testIdenticalIntervals" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testInvalidIntervalValues1" classname="IntervalTreeTest" time="0.001"/>
   <testcase name="testInvalidIntervalValues2" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testInvalidOperator" classname="IntervalTreeTest" time="0.002"/>
-  <testcase name="testEqualsExactBehavior" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testInvalidOperator" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testEqualsExactBehavior" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testTooFewOperandsForOperator" classname="IntervalTreeTest" time="0.001"/>
   <testcase name="testOnlyOperator" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testIntervalFormatVariations" classname="IntervalTreeTest" time="0.0"/>
@@ -17,48 +17,48 @@
   <testcase name="testNegativeIntervals" classname="IntervalTreeTest" time="0.001"/>
   <testcase name="testTooManyOperands" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testMixedInvalidTokens" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testMinValueHandling" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testMinValueHandling" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testMixedSignIntervals" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testSimpleIntersection" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testSimpleIntersection" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testEmptyExpression" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testIntervalOperatorExactBehavior" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testIntervalOperatorExactBehavior" classname="IntervalTreeTest" time="0.001"/>
   <testcase name="testZeroInterval" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testNullExpression" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testNullExpression" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testAllOperators" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testDeeplyNestedExpression" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testSingleInterval" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testHashCodeConsistency" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testParseIntervalExactValidation" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testIntervalStartEndComparison" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testSingleInterval" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testHashCodeConsistency" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testParseIntervalExactValidation" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testIntervalStartEndComparison" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testMultipleOperatorsNoOperands" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testMathMinMaxMutations" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testMathMinMaxMutations" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testZeroLengthInterval" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testIntervalTreeOperatorSwitch" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testWhitespaceHandling" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testIntervalTreeOperatorSwitch" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testWhitespaceHandling" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testIntervalTreeEmptyChecks" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testVeryLargeNegativeInterval" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testWhitespaceOnlyExpression" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testWhitespaceOnlyExpression" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testAlternatingOperations" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testComplexTextTree" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testExamplesFromAssignment" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testComplexTextTree" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testExamplesFromAssignment" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testTouchingIntervals" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testExactTextTreeFormat" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testExactTextTreeFormat" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testIntervalIntersectionCondition" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testNoIntersection" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testInvalidIntervalOrder" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testMixedOperations" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testInvalidIntervalOrder" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testMixedOperations" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testInvalidIntervalFormat1" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testInvalidIntervalFormat2" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testInvalidIntervalFormat3" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testInvalidIntervalFormat4" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testInvalidIntervalFormat5" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testExactComparisonOperators" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testInvalidIntervalFormat4" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testInvalidIntervalFormat5" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testExactComparisonOperators" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testChainedIntersections" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testChainedUnions" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testComplexExpression1" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testChainedUnions" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testComplexExpression1" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testComplexExpression2" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testIntervalUnionMathOperations" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testTooFewOperandsComplex" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testTooFewOperandsComplex" classname="IntervalTreeTest" time="0.001"/>
   <testcase name="testParseIntervalCommaChecks" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testCompletelyContainedIntervals" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testAdjacentIntervals" classname="IntervalTreeTest" time="0.0"/>
