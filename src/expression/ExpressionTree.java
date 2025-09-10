@@ -1,68 +1,31 @@
 package expression;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
- * This class represents an expression tree for algebraic expressions.
- * It can parse postfix expressions and evaluate them, as well as convert
- * to various formats including infix, Scheme, and tree visualization.
+ * Expression tree for algebraic expressions parsed from postfix.
+ *
+ * <p>Supports evaluation, infix/Scheme printing, and a simple text tree view.
  */
 public class ExpressionTree implements Expression {
 
-  /**
-   * Abstract base class for expression tree nodes.
-   */
+  /** Base node for the tree. */
   private abstract static class Node {
-    /**
-     * Evaluates this node and returns the result.
-     *
-     * @return the evaluated value as a double
-     */
     abstract double evaluate();
 
-    /**
-     * Returns the infix representation of this node.
-     *
-     * @return the infix string
-     */
     abstract String infix();
 
-    /**
-     * Returns the Scheme expression representation of this node.
-     *
-     * @return the Scheme expression string
-     */
     abstract String schemeExpression();
 
-    /**
-     * Returns the text tree representation of this node.
-     *
-     * @param prefix the prefix for formatting
-     * @param isLast whether this is the last child
-     * @return the text tree string
-     */
     abstract String textTree(String prefix, boolean isLast);
-
-    /**
-     * Returns the height of this node in the tree.
-     *
-     * @return the height as an integer
-     */
-    abstract int getHeight();
   }
 
-  /**
-   * Node representing a numeric operand.
-   */
-  private static class NumberNode extends Node {
+  /** Leaf node holding a number. */
+  private static final class NumberNode extends Node {
     private final double value;
 
-    /**
-     * Constructs a number node with the given value.
-     *
-     * @param value the numeric value
-     */
-    public NumberNode(double value) {
+    NumberNode(double value) {
       this.value = value;
     }
 
@@ -73,199 +36,148 @@ public class ExpressionTree implements Expression {
 
     @Override
     String infix() {
-      if (value == Math.floor(value) && !Double.isInfinite(value)) {
-        return String.format("%.1f", value);
-      }
-      return String.valueOf(value);
+      return fmt(value);
     }
 
     @Override
     String schemeExpression() {
-      // Format the number appropriately for Scheme
-      if (value == Math.floor(value) && !Double.isInfinite(value)) {
-        return String.format("%.1f", value);
-      }
-      return String.valueOf(value);
+      return fmt(value);
     }
 
     @Override
     String textTree(String prefix, boolean isLast) {
-      // return the value for leaf nodes
-      if (value == Math.floor(value) && !Double.isInfinite(value)) {
-        return String.format("%.1f", value);
-      }
-      return String.valueOf(value);
-    }
-
-    @Override
-    int getHeight() {
-      return 1;
+      return fmt(value);
     }
   }
 
-  /**
-   * Node representing a binary operator.
-   */
-  private static class OperatorNode extends Node {
-    private final String operator;
+  /** Internal node holding a binary operator. */
+  private static final class OperatorNode extends Node {
+    private final String op;
     private final Node left;
     private final Node right;
 
-    /**
-     * Constructs an operator node.
-     *
-     * @param operator the operator symbol
-     * @param left the left child node
-     * @param right the right child node
-     */
-    public OperatorNode(String operator, Node left, Node right) {
-      this.operator = operator;
+    OperatorNode(String op, Node left, Node right) {
+      this.op = op;
       this.left = left;
       this.right = right;
     }
 
     @Override
     double evaluate() {
-      double leftVal = left.evaluate();
-      double rightVal = right.evaluate();
-
-      switch (operator) {
+      final double a = left.evaluate();
+      final double b = right.evaluate();
+      switch (op) {
         case "+":
-          return leftVal + rightVal;
+          return a + b;
         case "-":
-          return leftVal - rightVal;
+          return a - b;
         case "*":
-          return leftVal * rightVal;
+          return a * b;
         case "/":
-          if (rightVal == 0) {
-            throw new ArithmeticException("Division by zero");
+          if (b == 0.0) {
+            throw new ArithmeticException("division by zero");
           }
-          return leftVal / rightVal;
+          return a / b;
         default:
-          // This should never happen if isOperator is correct
-          throw new IllegalArgumentException("Unknown operator: " + operator);
+          throw new IllegalArgumentException("unknown operator: " + op);
       }
     }
 
     @Override
     String infix() {
-      return "( " + left.infix() + " " + operator + " " + right.infix() + " )";
+      return "( " + left.infix() + " " + op + " " + right.infix() + " )";
     }
 
     @Override
     String schemeExpression() {
-      return "( " + operator + " " + left.schemeExpression() + " "
-          + right.schemeExpression() + " )";
+      return "( " + op + " " + left.schemeExpression() + " " + right.schemeExpression() + " )";
     }
 
     @Override
     String textTree(String prefix, boolean isLast) {
-      StringBuilder result = new StringBuilder();
+      StringBuilder sb = new StringBuilder();
+      sb.append(op).append('\n');
 
-      // Add the operator
-      result.append(operator).append("\n");
+      // connector lines from operator to children
+      sb.append(prefix).append("|\n");
+      sb.append(prefix).append("|\n");
 
-      // Add the connecting lines
-      result.append(prefix).append("|\n");
-      result.append(prefix).append("|\n");
-
-      // Add the left child with its prefix
-      result.append(prefix).append("|___");
-      String leftResult = left.textTree(prefix + "|   ", false);
-      result.append(leftResult);
-
-      // Always add newline after left child
-      if (!leftResult.endsWith("\n")) {
-        result.append("\n");
+      // left child
+      sb.append(prefix).append("|___");
+      String leftStr = left.textTree(prefix + "|   ", false);
+      sb.append(leftStr);
+      if (!leftStr.endsWith("\n")) {
+        sb.append('\n');
       }
 
-      // Add spacing line before right child
-      result.append(prefix).append("|\n");
+      // spacer before right child
+      sb.append(prefix).append("|\n");
 
-      // Add the right child
-      result.append(prefix).append("|___");
-      String rightResult = right.textTree(prefix + "    ", true);
-      result.append(rightResult);
+      // right child
+      sb.append(prefix).append("|___");
+      sb.append(right.textTree(prefix + "    ", true));
 
-      return result.toString();
-    }
-
-    @Override
-    int getHeight() {
-      return 1 + Math.max(left.getHeight(), right.getHeight());
+      return sb.toString();
     }
   }
 
   private final Node root;
 
   /**
-   * Constructs an ExpressionTree from a postfix expression string.
+   * Build an expression tree from a space-separated postfix string.
    *
-   * @param postfixExpression the postfix expression as a space-separated string
-   * @throws IllegalArgumentException if the expression is invalid
+   * @param postfix space-separated tokens (numbers and + - * /)
+   * @throws IllegalArgumentException if the expression is malformed
    */
-  public ExpressionTree(String postfixExpression) throws IllegalArgumentException {
-    if (postfixExpression == null || postfixExpression.trim().isEmpty()) {
-      throw new IllegalArgumentException("Expression cannot be null or empty");
+  public ExpressionTree(String postfix) {
+    if (postfix == null || postfix.trim().isEmpty()) {
+      throw new IllegalArgumentException("expression must be non-empty");
     }
-
-    this.root = parsePostfix(postfixExpression.trim());
+    this.root = parsePostfix(postfix.trim());
   }
 
-  /**
-   * Parses a postfix expression and builds the expression tree.
-   *
-   * @param expression the postfix expression
-   * @return the root node of the expression tree
-   * @throws IllegalArgumentException if the expression is invalid
-   */
-  private Node parsePostfix(String expression) throws IllegalArgumentException {
-    String[] tokens = expression.split("\\s+");
-    Stack<Node> stack = new Stack<>();
+  private Node parsePostfix(String s) {
+    String[] tokens = s.split("\\s+");
+    Deque<Node> st = new ArrayDeque<>();
 
-    for (String token : tokens) {
-      if (isOperator(token)) {
-        // Check if we have enough operands
-        if (stack.size() < 2) {
-          throw new IllegalArgumentException(
-              "Invalid expression: insufficient operands for operator " + token);
+    for (String tok : tokens) {
+      if (isOperator(tok)) {
+        if (st.size() < 2) {
+          throw new IllegalArgumentException("insufficient operands for operator: " + tok);
         }
-        // Pop in reverse order (right first, then left)
-        Node right = stack.pop();
-        Node left = stack.pop();
-        stack.push(new OperatorNode(token, left, right));
+        Node right = st.pop();
+        Node left = st.pop();
+        st.push(new OperatorNode(tok, left, right));
       } else {
-        // Parse as a number
         try {
-          double value = Double.parseDouble(token);
-          stack.push(new NumberNode(value));
+          st.push(new NumberNode(Double.parseDouble(tok)));
         } catch (NumberFormatException e) {
-          throw new IllegalArgumentException("Invalid token: " + token);
+          throw new IllegalArgumentException("invalid token: " + tok);
         }
       }
     }
 
-    if (stack.size() != 1) {
-      if (stack.isEmpty()) {
-        throw new IllegalArgumentException("Invalid expression: no result");
-      } else {
-        throw new IllegalArgumentException(
-            "Invalid expression: too many operands");
-      }
+    if (st.size() != 1) {
+      throw new IllegalArgumentException(st.isEmpty()
+          ? "no result produced"
+          : "too many operands");
     }
-
-    return stack.pop();
+    return st.pop();
   }
 
-  /**
-   * Checks if a token is a valid operator.
-   *
-   * @param token the token to check
-   * @return true if the token is an operator, false otherwise
-   */
-  private boolean isOperator(String token) {
-    return token.equals("+") || token.equals("-")
-        || token.equals("*") || token.equals("/");
+  private static boolean isOperator(String t) {
+    return "+".equals(t) || "-".equals(t) || "*".equals(t) || "/".equals(t);
+  }
+
+  /** Format numbers: show "3.0" for integers to match sample output. */
+  private static String fmt(double v) {
+    if (Double.isInfinite(v) || Double.isNaN(v)) {
+      return String.valueOf(v);
+    }
+    if (v == Math.floor(v)) {
+      return String.format("%.1f", v);
+    }
+    return String.valueOf(v);
   }
 
   @Override

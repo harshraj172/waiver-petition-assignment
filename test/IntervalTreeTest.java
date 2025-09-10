@@ -6,100 +6,110 @@ import intervals.Intervals;
 import org.junit.Test;
 
 /**
- * Optimized JUnit tests for IntervalTree with minimal redundancy.
+ * Tests for interval tree implementation.
  */
 public class IntervalTreeTest {
 
   @Test
   public void testSingleInterval() {
-    Intervals tree = new IntervalTree("5,10");
-    Interval result = tree.evaluate();
-    assertEquals(new Interval(5, 10), result);
-    assertEquals("5,10", tree.textTree());
+    Intervals t = new IntervalTree("5,10");
+    Interval res = t.evaluate();
+    assertEquals(new Interval(5, 10), res);
+    assertEquals("5,10", t.textTree());
   }
 
   @Test
-  public void testSimpleUnion() {
+  public void testBasicUnion() {
     Intervals tree = new IntervalTree("1,4 2,5 U");
     Interval result = tree.evaluate();
     assertEquals(new Interval(1, 5), result);
-    String expected = "U\n|\n|\n|___1,4\n|\n|___2,5";
-    assertEquals(expected, tree.textTree());
+
+    // check the tree output
+    String expectedTree = "U\n|\n|\n|___1,4\n|\n|___2,5";
+    assertEquals(expectedTree, tree.textTree());
   }
 
   @Test
-  public void testSimpleIntersection() {
+  public void testBasicIntersect() {
     Intervals tree = new IntervalTree("1,4 2,5 I");
-    Interval result = tree.evaluate();
-    assertEquals(new Interval(2, 4), result);
-    String expected = "I\n|\n|\n|___1,4\n|\n|___2,5";
-    assertEquals(expected, tree.textTree());
+    Interval r = tree.evaluate();
+    assertEquals(new Interval(2, 4), r);
+
+    String exp = "I\n|\n|\n|___1,4\n|\n|___2,5";
+    assertEquals(exp, tree.textTree());
   }
 
   @Test
-  public void testNoIntersection() {
-    Intervals tree = new IntervalTree("1,3 5,7 I");
-    Interval result = tree.evaluate();
+  public void testNoOverlap() {
+    // these don't overlap so intersection should be empty
+    Intervals t = new IntervalTree("1,3 5,7 I");
+    Interval result = t.evaluate();
     assertEquals(new Interval(Integer.MIN_VALUE, Integer.MIN_VALUE), result);
   }
 
   @Test
-  public void testTouchingIntervals() {
-    // Intervals that touch at a point
-    Intervals tree1 = new IntervalTree("1,4 4,7 U");
-    assertEquals(new Interval(1, 7), tree1.evaluate());
+  public void testTouching() {
+    // what happens when intervals touch at one point
+    Intervals unionTree = new IntervalTree("1,4 4,7 U");
+    assertEquals(new Interval(1, 7), unionTree.evaluate());
 
-    Intervals tree2 = new IntervalTree("1,4 4,7 I");
-    assertEquals(new Interval(4, 4), tree2.evaluate());
+    Intervals intTree = new IntervalTree("1,4 4,7 I");
+    Interval res = intTree.evaluate();
+    assertEquals(new Interval(4, 4), res);  // just the point 4
   }
 
   @Test
-  public void testNegativeIntervals() {
-    Intervals tree1 = new IntervalTree("-5,-2 -3,1 U");
-    assertEquals(new Interval(-5, 1), tree1.evaluate());
+  public void testNegativeNumbers() {
+    Intervals t1 = new IntervalTree("-5,-2 -3,1 U");
+    assertEquals(new Interval(-5, 1), t1.evaluate());
 
-    Intervals tree2 = new IntervalTree("-5,-2 -3,1 I");
-    assertEquals(new Interval(-3, -2), tree2.evaluate());
+    Intervals t2 = new IntervalTree("-5,-2 -3,1 I");
+    Interval intersection = t2.evaluate();
+    assertEquals(new Interval(-3, -2), intersection);
   }
 
   @Test
-  public void testZeroLengthInterval() {
-    Intervals tree1 = new IntervalTree("5,5");
-    assertEquals(new Interval(5, 5), tree1.evaluate());
+  public void testPointInterval() {
+    // interval with same start and end
+    Intervals tree = new IntervalTree("5,5");
+    assertEquals(new Interval(5, 5), tree.evaluate());
 
     Intervals tree2 = new IntervalTree("5,5 5,5 U");
     assertEquals(new Interval(5, 5), tree2.evaluate());
   }
 
   @Test
-  public void testComplexExpression() {
-    // Test "-4,4 2,5 U -1,4 I"
+  public void testComplexOps() {
+    // from assignment: "-4,4 2,5 U -1,4 I"
     Intervals tree = new IntervalTree("-4,4 2,5 U -1,4 I");
-    // First: (-4,4) U (2,5) = (-4,5)
-    // Then: (-4,5) I (-1,4) = (-1,4)
-    assertEquals(new Interval(-1, 4), tree.evaluate());
+    // (-4,4) U (2,5) = (-4,5)
+    // (-4,5) I (-1,4) = (-1,4)
+    Interval expected = new Interval(-1, 4);
+    assertEquals(expected, tree.evaluate());
   }
 
   @Test
-  public void testChainedOperations() {
-    // Test nested operations
+  public void testChaining() {
+    // multiple operations
     Intervals tree = new IntervalTree("1,5 2,6 I 3,7 4,8 I U");
     assertEquals(new Interval(2, 7), tree.evaluate());
   }
 
   @Test
-  public void testWhitespaceHandling() {
-    Intervals tree1 = new IntervalTree("  1,4   2,5   U  ");
-    assertEquals(new Interval(1, 5), tree1.evaluate());
+  public void testWhitespace() {
+    // extra spaces shouldn't matter
+    Intervals t1 = new IntervalTree("  1,4   2,5   U  ");
+    assertEquals(new Interval(1, 5), t1.evaluate());
 
-    Intervals tree2 = new IntervalTree("1,4\t2,5\tU");
-    assertEquals(new Interval(1, 5), tree2.evaluate());
+    // tabs too
+    Intervals t2 = new IntervalTree("1,4\t2,5\tU");
+    assertEquals(new Interval(1, 5), t2.evaluate());
   }
 
   @Test
-  public void testComplexTextTree() {
+  public void testTreeOutput() {
     Intervals tree = new IntervalTree("1,2 3,4 5,6 U I");
-    String expected = "I\n"
+    String treeStr = "I\n"
         + "|\n"
         + "|\n"
         + "|___1,2\n"
@@ -110,221 +120,230 @@ public class IntervalTreeTest {
         + "    |___3,4\n"
         + "    |\n"
         + "    |___5,6";
-    assertEquals(expected, tree.textTree());
+    assertEquals(treeStr, tree.textTree());
   }
 
+  // Testing interval operations directly
+
   @Test
-  public void testMathMinMaxMutations() {
-    // Ensure Math.min/max aren't swapped
+  public void testIntervalMethods() {
     Interval i1 = new Interval(1, 5);
     Interval i2 = new Interval(3, 7);
 
-    Interval intersection = i1.intersect(i2);
-    assertEquals("3,5", intersection.toString());
+    // intersection should be (3,5)
+    Interval inter = i1.intersect(i2);
+    assertEquals("3,5", inter.toString());
 
-    Interval union = i1.union(i2);
-    assertEquals("1,7", union.toString());
+    // union should be (1,7)
+    Interval uni = i1.union(i2);
+    assertEquals("1,7", uni.toString());
   }
 
   @Test
-  public void testExactComparisonOperators() {
-    boolean caught = false;
+  public void testIntervalValidation() {
+    boolean exceptionThrown = false;
     try {
-      new Interval(5, 4);
+      new Interval(5, 4);  // start > end, should fail
     } catch (IllegalArgumentException e) {
-      caught = true;
+      exceptionThrown = true;
       assertEquals("Invalid interval", e.getMessage());
     }
-    assertEquals(true, caught);
+    assertEquals(true, exceptionThrown);
 
-    Interval valid = new Interval(5, 5);
-    assertEquals("5,5", valid.toString());
+    // but equal is fine
+    Interval i = new Interval(5, 5);
+    assertEquals("5,5", i.toString());
   }
 
   @Test
-  public void testIntervalOperatorExactBehavior() {
-    // Test U operator specifically
-    Intervals unionTree = new IntervalTree("1,3 2,4 U");
-    assertEquals("1,4", unionTree.evaluate().toString());
+  public void testOperatorBehavior() {
+    // make sure U and I work correctly
+    Intervals u = new IntervalTree("1,3 2,4 U");
+    assertEquals("1,4", u.evaluate().toString());
 
-    // Test I operator specifically
-    Intervals intersectTree = new IntervalTree("1,3 2,4 I");
-    assertEquals("2,3", intersectTree.evaluate().toString());
+    Intervals i = new IntervalTree("1,3 2,4 I");
+    assertEquals("2,3", i.evaluate().toString());
 
-    Intervals complexTree = new IntervalTree("1,5 3,7 I 2,6 U");
-    assertEquals("2,6", complexTree.evaluate().toString());
+    // complex one
+    Intervals c = new IntervalTree("1,5 3,7 I 2,6 U");
+    assertEquals("2,6", c.evaluate().toString());
   }
 
   @Test
-  public void testMinValueHandling() {
+  public void testEmptyIntersection() {
     Intervals tree = new IntervalTree("1,2 5,6 I");
-    Interval result = tree.evaluate();
+    Interval res = tree.evaluate();
 
-    String[] parts = result.toString().split(",");
+    // should be MIN_VALUE for both
+    String[] parts = res.toString().split(",");
     assertEquals(String.valueOf(Integer.MIN_VALUE), parts[0]);
     assertEquals(String.valueOf(Integer.MIN_VALUE), parts[1]);
   }
 
   @Test
-  public void testIntervalIntersectionCondition() {
+  public void testNoIntersectDetails() {
     Interval i1 = new Interval(1, 2);
     Interval i2 = new Interval(3, 4);
 
     Interval result = i1.intersect(i2);
-    // min = max(1,3) = 3, max = min(2,4) = 2
-    // Since 3 > 2, should set to MIN_VALUE
-    String str = result.toString();
-    assertEquals("-2147483648,-2147483648", str);
+    // max(1,3) = 3, min(2,4) = 2, but 3 > 2 so no intersection
+    assertEquals("-2147483648,-2147483648", result.toString());
   }
 
   @Test
-  public void testIntervalUnionMathOperations() {
-    Interval i1 = new Interval(5, 10);
-    Interval i2 = new Interval(1, 7);
+  public void testUnionLogic() {
+    Interval int1 = new Interval(5, 10);
+    Interval int2 = new Interval(1, 7);
+    Interval u = int1.union(int2);
+    assertEquals("1,10", u.toString());
 
-    Interval union = i1.union(i2);
-    assertEquals("1,10", union.toString());
-
-    Interval i3 = new Interval(1, 3);
-    Interval i4 = new Interval(8, 10);
-    Interval union2 = i3.union(i4);
-    assertEquals("1,10", union2.toString());
+    // non-overlapping
+    Interval int3 = new Interval(1, 3);
+    Interval int4 = new Interval(8, 10);
+    Interval u2 = int3.union(int4);
+    assertEquals("1,10", u2.toString());
   }
 
   @Test
-  public void testEqualsExactBehavior() {
+  public void testEquals() {
     Interval i1 = new Interval(1, 5);
     Interval i2 = new Interval(1, 5);
 
+    // reflexive
     assertEquals(true, i1.equals(i1));
 
+    // symmetric
     assertEquals(true, i1.equals(i2));
     assertEquals(true, i2.equals(i1));
 
+    // different intervals
     Interval i3 = new Interval(1, 6);
     assertEquals(false, i1.equals(i3));
 
     Interval i4 = new Interval(2, 5);
     assertEquals(false, i1.equals(i4));
 
+    // null and wrong type
     assertEquals(false, i1.equals(null));
     assertEquals(false, i1.equals("1,5"));
   }
 
   @Test
-  public void testHashCodeConsistency() {
+  public void testHashCode() {
     Interval i1 = new Interval(5, 10);
     Interval i2 = new Interval(5, 10);
 
+    // equal objects should have same hash
     assertEquals(i1.hashCode(), i2.hashCode());
 
-    int hash1 = i1.hashCode();
-    int hash2 = i1.hashCode();
-    assertEquals(hash1, hash2);
+    // consistent
+    int h1 = i1.hashCode();
+    int h2 = i1.hashCode();
+    assertEquals(h1, h2);
   }
 
   @Test
-  public void testParseIntervalCommaChecks() {
+  public void testBadCommaFormat() {
     try {
-      new IntervalTree("12 3,4 U");
+      new IntervalTree("12 3,4 U");  // no comma in first
       assertEquals("Should throw", true, false);
     } catch (IllegalArgumentException e) {
       assertEquals(true, e.getMessage().contains("Invalid interval"));
     }
 
     try {
-      new IntervalTree("1,2,3 4,5 U");
+      new IntervalTree("1,2,3 4,5 U");  // too many commas
       assertEquals("Should throw", true, false);
     } catch (IllegalArgumentException e) {
       assertEquals(true, e.getMessage().contains("Invalid interval"));
     }
   }
 
+  // Error cases
+
   @Test(expected = IllegalArgumentException.class)
-  public void testNullExpression() {
+  public void nullTest() {
     new IntervalTree(null);
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testEmptyExpression() {
+  public void emptyTest() {
     new IntervalTree("");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testWhitespaceOnlyExpression() {
+  public void spacesOnly() {
     new IntervalTree("   ");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidIntervalFormat1() {
-    new IntervalTree("1-4 2,5 U"); // Using dash instead of comma
+  public void dashNotComma() {
+    new IntervalTree("1-4 2,5 U");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidIntervalFormat2() {
-    new IntervalTree("1 2,3 U"); // Missing comma
+  public void missingComma() {
+    new IntervalTree("1 2,3 U");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidIntervalFormat3() {
+  public void emptyStart() {
     new IntervalTree(",2 3,4 U");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidIntervalValues1() {
+  public void notNumbers() {
     new IntervalTree("a,b 1,2 U");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidIntervalValues2() {
-    new IntervalTree("1.5,2.5 3,4 U");
+  public void decimalsNotAllowed() {
+    new IntervalTree("1.5,2.5 3,4 U");  // we only support integers
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidOperator() {
-    new IntervalTree("1,2 3,4 +");
+  public void wrongOperator() {
+    new IntervalTree("1,2 3,4 +");  // + is not valid
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testTooFewOperandsForOperator() {
+  public void notEnoughArgs() {
     new IntervalTree("1,2 U");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testTooFewOperandsComplex() {
-    new IntervalTree("1,2 3,4 U I");
+  public void notEnoughArgs2() {
+    new IntervalTree("1,2 3,4 U I");  // I needs another operand
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testTooManyOperands() {
-    new IntervalTree("1,2 3,4 5,6 U");
+  public void tooManyArgs() {
+    new IntervalTree("1,2 3,4 5,6 U");  // U only takes 2
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testOnlyOperator() {
+  public void operatorOnly() {
     new IntervalTree("U");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testInvalidIntervalOrder() {
-    new IntervalTree("5,2 3,4 U");
+  public void badOrder() {
+    new IntervalTree("5,2 3,4 U");  // 5 > 2, invalid interval
   }
 
-  // Stack validation tests
-
   @Test
-  public void testIntervalTreeEmptyChecks() {
-    // Test trim().isEmpty() branches
+  public void testEmptyStringVariations() {
+    // different types of whitespace
     try {
       new IntervalTree(" ");
-      assertEquals("Should throw", true, false);
+      assertEquals("Should fail", true, false);
     } catch (IllegalArgumentException e) {
       assertEquals("Expression cannot be null or empty", e.getMessage());
     }
 
     try {
       new IntervalTree("\t\n");
-      assertEquals("Should throw", true, false);
+      assertEquals("Should fail", true, false);
     } catch (IllegalArgumentException e) {
       assertEquals("Expression cannot be null or empty", e.getMessage());
     }

@@ -3,19 +3,18 @@ package intervals;
 import java.util.Objects;
 
 /**
- * This class represents a 1-dimensional interval. The interval is
- * characterized by a start and an end, both integral values.
+ * Represents a 1D interval with integer start and end points.
  */
 public class Interval {
   private int start;
   private int end;
 
   /**
-   * Construct an interval given its start and end values.
+   * Creates an interval from start to end.
    *
-   * @param start the start
-   * @param end the end
-   * @throws IllegalArgumentException if start is greater than end
+   * @param start starting point
+   * @param end ending point
+   * @throws IllegalArgumentException if start > end
    */
   public Interval(int start, int end) throws IllegalArgumentException {
     if (start > end) {
@@ -26,73 +25,72 @@ public class Interval {
   }
 
   /**
-   * Compute and return an interval that represents the intersection of this
-   * and another interval. The intersection is defined as the smallest
-   * interval that overlaps with both intervals. If no intersection exists,
-   * return an interval with equal and very low start and end values.
+   * Finds the intersection with another interval.
+   * Returns [MIN_VALUE, MIN_VALUE] if intervals don't overlap.
    *
-   * @param other the other interval
-   * @return the interval that is the intersection of this and the other
-   *         interval
+   * @param other the interval to intersect with
+   * @return intersection interval
    */
   public Interval intersect(Interval other) {
-    int min = Math.max(this.start, other.start);
-    int max = Math.min(this.end, other.end);
-    if (min > max) {
-      min = Integer.MIN_VALUE;
-      max = Integer.MIN_VALUE;
+    int newStart = Math.max(this.start, other.start);
+    int newEnd = Math.min(this.end, other.end);
+
+    // No overlap case
+    if (newStart > newEnd) {
+      return new Interval(Integer.MIN_VALUE, Integer.MIN_VALUE);
     }
-    return new Interval(min, max);
+    return new Interval(newStart, newEnd);
   }
 
   /**
-   * Computes and returns the union of this and another interval. The union is
-   * defined as the smallest interval that both intervals overlap with.
+   * Returns the union with another interval.
    *
-   * @param other the other interval
-   * @return the union of the two intervals
+   * @param other the interval to union with
+   * @return union interval
    */
   public Interval union(Interval other) {
-    return new Interval(Math.min(this.start, other.start),
-        Math.max(this.end, other.end));
+    return new Interval(
+        Math.min(this.start, other.start),
+        Math.max(this.end, other.end)
+    );
   }
 
   /**
-   * Return a string-representation of this interval.
+   * String representation as "start,end".
    *
-   * @return a string of the format start,end
-   */
-  public String toString() {
-    return "" + start + "," + end;
-  }
-
-  /**
-   * Sameness test for two intervals. Two intervals are deemed to be equal to
-   * each other if their start and end values coincide.
-   *
-   * @param other the other object to be tested for equality
-   * @return true if the two intervals are equal, false otherwise
+   * @return interval as string
    */
   @Override
-  public boolean equals(Object other) {
-    if (this == other) {
-      return true;
-    }
-
-    if (!(other instanceof Interval)) {
-      return false;
-    }
-    Interval otherInterval = (Interval) other;
-    return this.start == otherInterval.start && this.end == otherInterval.end;
+  public String toString() {
+    return start + "," + end;
   }
 
   /**
-   * Hashcode for the interval, using start and end.
+   * Checks if two intervals are equal.
    *
-   * @return the hash value for this interval
+   * @param obj object to compare
+   * @return true if intervals have same start and end
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof Interval)) {
+      return false;
+    }
+
+    Interval that = (Interval) obj;
+    return this.start == that.start && this.end == that.end;
+  }
+
+  /**
+   * Hash code based on start and end values.
+   *
+   * @return hash code
    */
   @Override
   public int hashCode() {
-    return Objects.hash(this.start, this.end);
+    return Objects.hash(start, end);
   }
 }

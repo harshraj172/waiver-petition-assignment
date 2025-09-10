@@ -3,50 +3,49 @@ package intervals;
 import java.util.Stack;
 
 /**
- * This class represents an expression tree for interval operations.
- * It can parse postfix interval expressions and evaluate them, as well as
- * provide tree visualization.
+ * Interval expression tree implementation for union, intersection operations.
+ * Parses postfix notation and builds a tree structure.
  */
 public class IntervalTree implements Intervals {
 
   /**
-   * Abstract base class for interval expression tree nodes.
+   * Base node class for the tree.
    */
   private abstract static class Node {
     /**
-     * Evaluates this node and returns the resulting interval.
+     * Evaluate the node and get its interval.
      *
-     * @return the evaluated interval
+     * @return resulting interval
      */
     abstract Interval evaluate();
 
     /**
-     * Returns the text tree representation of this node.
+     * Get text representation of subtree.
      *
-     * @param prefix the prefix for formatting
-     * @param isLast whether this is the last child
-     * @return the text tree string
+     * @param prefix spacing prefix
+     * @param isLast is this the last child
+     * @return formatted tree string
      */
     abstract String textTree(String prefix, boolean isLast);
 
     /**
-     * Returns the height of this node in the tree.
+     * Get tree height.
      *
-     * @return the height as an integer
+     * @return height
      */
     abstract int getHeight();
   }
 
   /**
-   * Node representing an interval operand.
+   * Leaf node containing an interval.
    */
   private static class IntervalNode extends Node {
     private final Interval interval;
 
     /**
-     * Constructs an interval node with the given interval.
+     * Create leaf node.
      *
-     * @param interval the interval value
+     * @param interval the interval to store
      */
     public IntervalNode(Interval interval) {
       this.interval = interval;
@@ -69,7 +68,7 @@ public class IntervalTree implements Intervals {
   }
 
   /**
-   * Node representing a binary operator (Union or Intersection).
+   * Internal node for operators (U or I).
    */
   private static class OperatorNode extends Node {
     private final String operator;
@@ -77,11 +76,11 @@ public class IntervalTree implements Intervals {
     private final Node right;
 
     /**
-     * Constructs an operator node.
+     * Create operator node.
      *
-     * @param operator the operator symbol (U or I)
-     * @param left the left child node
-     * @param right the right child node
+     * @param operator U for union, I for intersection
+     * @param left left subtree
+     * @param right right subtree
      */
     public OperatorNode(String operator, Node left, Node right) {
       this.operator = operator;
@@ -100,7 +99,7 @@ public class IntervalTree implements Intervals {
         case "I":
           return leftInterval.intersect(rightInterval);
         default:
-          // should never happen if isOperator is correct
+          // shouldn't happen with valid input
           throw new IllegalArgumentException("Unknown operator: " + operator);
       }
     }
@@ -109,21 +108,27 @@ public class IntervalTree implements Intervals {
     String textTree(String prefix, boolean isLast) {
       StringBuilder result = new StringBuilder();
 
+      // Add operator at top
       result.append(operator).append("\n");
 
+      // Vertical lines
       result.append(prefix).append("|\n");
       result.append(prefix).append("|\n");
 
+      // Left child
       result.append(prefix).append("|___");
       String leftResult = left.textTree(prefix + "|   ", false);
       result.append(leftResult);
 
+      // Add newline if needed
       if (!leftResult.endsWith("\n")) {
         result.append("\n");
       }
 
+      // Spacing before right child
       result.append(prefix).append("|\n");
 
+      // Right child
       result.append(prefix).append("|___");
       String rightResult = right.textTree(prefix + "    ", true);
       result.append(rightResult);
@@ -140,10 +145,10 @@ public class IntervalTree implements Intervals {
   private final Node root;
 
   /**
-   * Constructs an IntervalTree from a postfix interval expression string.
+   * Build tree from postfix expression.
    *
-   * @param postfixExpression the postfix expression as a space-separated string
-   * @throws IllegalArgumentException if the expression is invalid
+   * @param postfixExpression space-separated postfix string
+   * @throws IllegalArgumentException for invalid expressions
    */
   public IntervalTree(String postfixExpression) throws IllegalArgumentException {
     if (postfixExpression == null || postfixExpression.trim().isEmpty()) {
@@ -154,11 +159,11 @@ public class IntervalTree implements Intervals {
   }
 
   /**
-   * Parses a postfix interval expression and builds the expression tree.
+   * Parse postfix and build tree using stack.
    *
-   * @param expression the postfix expression
-   * @return the root node of the expression tree
-   * @throws IllegalArgumentException if the expression is invalid
+   * @param expression postfix string
+   * @return root of tree
+   * @throws IllegalArgumentException if malformed
    */
   private Node parsePostfix(String expression) throws IllegalArgumentException {
     String[] tokens = expression.split("\\s+");
@@ -166,15 +171,17 @@ public class IntervalTree implements Intervals {
 
     for (String token : tokens) {
       if (isOperator(token)) {
+        // Need two operands for binary operator
         if (stack.size() < 2) {
           throw new IllegalArgumentException(
               "Invalid expression: insufficient operands for operator " + token);
         }
+        // Pop right then left (reverse order)
         Node right = stack.pop();
         Node left = stack.pop();
         stack.push(new OperatorNode(token, left, right));
       } else {
-        // Prse as an interval
+        // Must be an interval
         try {
           Interval interval = parseInterval(token);
           stack.push(new IntervalNode(interval));
@@ -184,7 +191,7 @@ public class IntervalTree implements Intervals {
       }
     }
 
-    // Check that we have exactly one element left (the root)
+    // Should have exactly one node left
     if (stack.size() != 1) {
       if (stack.isEmpty()) {
         throw new IllegalArgumentException("Invalid expression: no result");
@@ -198,26 +205,30 @@ public class IntervalTree implements Intervals {
   }
 
   /**
-   * Parses an interval string in the format "start,end".
-   * Supports both positive and negative integers.
+   * Parse "start,end" format into Interval.
+   * Handles negative numbers.
    *
-   * @param intervalStr the interval string
-   * @return the parsed Interval object
-   * @throws IllegalArgumentException if the format is invalid
+   * @param intervalStr string to parse
+   * @return new Interval
+   * @throws IllegalArgumentException if bad format
    */
   private Interval parseInterval(String intervalStr) throws IllegalArgumentException {
+    // Find comma separator
     int commaIndex = intervalStr.indexOf(',');
     if (commaIndex == -1) {
       throw new IllegalArgumentException("Invalid interval format: " + intervalStr);
     }
 
+    // Check for multiple commas
     if (intervalStr.indexOf(',', commaIndex + 1) != -1) {
       throw new IllegalArgumentException("Invalid interval format: " + intervalStr);
     }
 
+    // Split at comma
     String startStr = intervalStr.substring(0, commaIndex).trim();
     String endStr = intervalStr.substring(commaIndex + 1).trim();
 
+    // Both parts must exist
     if (startStr.isEmpty() || endStr.isEmpty()) {
       throw new IllegalArgumentException("Invalid interval format: " + intervalStr);
     }
@@ -232,10 +243,10 @@ public class IntervalTree implements Intervals {
   }
 
   /**
-   * Checks if a token is a valid operator.
+   * Check if token is U or I operator.
    *
-   * @param token the token to check
-   * @return true if the token is an operator, false otherwise
+   * @param token string to check
+   * @return true if operator
    */
   private boolean isOperator(String token) {
     return token.equals("U") || token.equals("I");

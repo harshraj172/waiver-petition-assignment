@@ -3,73 +3,72 @@
 import java.util.Stack;
 
 /**
- * This class represents an expression tree for interval operations.
- * It can parse postfix interval expressions and evaluate them, as well as
- * provide tree visualization.
+ * Interval expression tree implementation for union, intersection operations.
+ * Parses postfix notation and builds a tree structure.
  */
 public class IntervalTree implements Intervals {
 
   /**
-   * Abstract base class for interval expression tree nodes.
+   * Base node class for the tree.
    */
   private abstract static class Node {
     /**
-     * Evaluates this node and returns the resulting interval.
+     * Evaluate the node and get its interval.
      *
-     * @return the evaluated interval
+     * @return resulting interval
      */
     abstract Interval evaluate();
 
     /**
-     * Returns the text tree representation of this node.
+     * Get text representation of subtree.
      *
-     * @param prefix the prefix for formatting
-     * @param isLast whether this is the last child
-     * @return the text tree string
+     * @param prefix spacing prefix
+     * @param isLast is this the last child
+     * @return formatted tree string
      */
     abstract String textTree(String prefix, boolean isLast);
 
     /**
-     * Returns the height of this node in the tree.
+     * Get tree height.
      *
-     * @return the height as an integer
+     * @return height
      */
     abstract int getHeight();
   }
 
   /**
-   * Node representing an interval operand.
+   * Leaf node containing an interval.
    */
   private static class IntervalNode extends Node {
     private final Interval interval;
 
     /**
-     * Constructs an interval node with the given interval.
+     * Create leaf node.
      *
-     * @param interval the interval value
+     * @param interval the interval to store
      */
-<span class="fc" id="L51">    public IntervalNode(Interval interval) {</span>
-<span class="fc" id="L52">      this.interval = interval;</span>
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L50">    public IntervalNode(Interval interval) {</span>
+<span class="fc" id="L51">      this.interval = interval;</span>
+<span class="fc" id="L52">    }</span>
 
     @Override
     Interval evaluate() {
-<span class="fc" id="L57">      return interval;</span>
+<span class="fc" id="L56">      return interval;</span>
     }
 
     @Override
     String textTree(String prefix, boolean isLast) {
-<span class="fc" id="L62">      return interval.toString();</span>
+<span class="fc" id="L61">      return interval.toString();</span>
     }
 
     @Override
     int getHeight() {
-<span class="nc" id="L67">      return 1;</span>
+<span class="nc" id="L66">      return 1;</span>
     }
   }
 
   /**
-   * Node representing a binary operator (Union or Intersection).
+   * Internal node for operators (U or I).
    */
   private static class OperatorNode extends Node {
     private final String operator;
@@ -77,178 +76,190 @@ public class IntervalTree implements Intervals {
     private final Node right;
 
     /**
-     * Constructs an operator node.
+     * Create operator node.
      *
-     * @param operator the operator symbol (U or I)
-     * @param left the left child node
-     * @param right the right child node
+     * @param operator U for union, I for intersection
+     * @param left left subtree
+     * @param right right subtree
      */
-<span class="fc" id="L86">    public OperatorNode(String operator, Node left, Node right) {</span>
-<span class="fc" id="L87">      this.operator = operator;</span>
-<span class="fc" id="L88">      this.left = left;</span>
-<span class="fc" id="L89">      this.right = right;</span>
-<span class="fc" id="L90">    }</span>
+<span class="fc" id="L85">    public OperatorNode(String operator, Node left, Node right) {</span>
+<span class="fc" id="L86">      this.operator = operator;</span>
+<span class="fc" id="L87">      this.left = left;</span>
+<span class="fc" id="L88">      this.right = right;</span>
+<span class="fc" id="L89">    }</span>
 
     @Override
     Interval evaluate() {
-<span class="fc" id="L94">      Interval leftInterval = left.evaluate();</span>
-<span class="fc" id="L95">      Interval rightInterval = right.evaluate();</span>
+<span class="fc" id="L93">      Interval leftInterval = left.evaluate();</span>
+<span class="fc" id="L94">      Interval rightInterval = right.evaluate();</span>
 
-<span class="pc bpc" id="L97" title="1 of 3 branches missed.">      switch (operator) {</span>
+<span class="pc bpc" id="L96" title="1 of 3 branches missed.">      switch (operator) {</span>
         case &quot;U&quot;:
-<span class="fc" id="L99">          return leftInterval.union(rightInterval);</span>
+<span class="fc" id="L98">          return leftInterval.union(rightInterval);</span>
         case &quot;I&quot;:
-<span class="fc" id="L101">          return leftInterval.intersect(rightInterval);</span>
+<span class="fc" id="L100">          return leftInterval.intersect(rightInterval);</span>
         default:
-          // should never happen if isOperator is correct
-<span class="nc" id="L104">          throw new IllegalArgumentException(&quot;Unknown operator: &quot; + operator);</span>
+          // shouldn't happen with valid input
+<span class="nc" id="L103">          throw new IllegalArgumentException(&quot;Unknown operator: &quot; + operator);</span>
       }
     }
 
     @Override
     String textTree(String prefix, boolean isLast) {
-<span class="fc" id="L110">      StringBuilder result = new StringBuilder();</span>
+<span class="fc" id="L109">      StringBuilder result = new StringBuilder();</span>
 
+      // Add operator at top
 <span class="fc" id="L112">      result.append(operator).append(&quot;\n&quot;);</span>
 
-<span class="fc" id="L114">      result.append(prefix).append(&quot;|\n&quot;);</span>
+      // Vertical lines
 <span class="fc" id="L115">      result.append(prefix).append(&quot;|\n&quot;);</span>
+<span class="fc" id="L116">      result.append(prefix).append(&quot;|\n&quot;);</span>
 
-<span class="fc" id="L117">      result.append(prefix).append(&quot;|___&quot;);</span>
-<span class="fc" id="L118">      String leftResult = left.textTree(prefix + &quot;|   &quot;, false);</span>
-<span class="fc" id="L119">      result.append(leftResult);</span>
+      // Left child
+<span class="fc" id="L119">      result.append(prefix).append(&quot;|___&quot;);</span>
+<span class="fc" id="L120">      String leftResult = left.textTree(prefix + &quot;|   &quot;, false);</span>
+<span class="fc" id="L121">      result.append(leftResult);</span>
 
-<span class="pc bpc" id="L121" title="1 of 2 branches missed.">      if (!leftResult.endsWith(&quot;\n&quot;)) {</span>
-<span class="fc" id="L122">        result.append(&quot;\n&quot;);</span>
+      // Add newline if needed
+<span class="pc bpc" id="L124" title="1 of 2 branches missed.">      if (!leftResult.endsWith(&quot;\n&quot;)) {</span>
+<span class="fc" id="L125">        result.append(&quot;\n&quot;);</span>
       }
 
-<span class="fc" id="L125">      result.append(prefix).append(&quot;|\n&quot;);</span>
+      // Spacing before right child
+<span class="fc" id="L129">      result.append(prefix).append(&quot;|\n&quot;);</span>
 
-<span class="fc" id="L127">      result.append(prefix).append(&quot;|___&quot;);</span>
-<span class="fc" id="L128">      String rightResult = right.textTree(prefix + &quot;    &quot;, true);</span>
-<span class="fc" id="L129">      result.append(rightResult);</span>
+      // Right child
+<span class="fc" id="L132">      result.append(prefix).append(&quot;|___&quot;);</span>
+<span class="fc" id="L133">      String rightResult = right.textTree(prefix + &quot;    &quot;, true);</span>
+<span class="fc" id="L134">      result.append(rightResult);</span>
 
-<span class="fc" id="L131">      return result.toString();</span>
+<span class="fc" id="L136">      return result.toString();</span>
     }
 
     @Override
     int getHeight() {
-<span class="nc" id="L136">      return 1 + Math.max(left.getHeight(), right.getHeight());</span>
+<span class="nc" id="L141">      return 1 + Math.max(left.getHeight(), right.getHeight());</span>
     }
   }
 
   private final Node root;
 
   /**
-   * Constructs an IntervalTree from a postfix interval expression string.
+   * Build tree from postfix expression.
    *
-   * @param postfixExpression the postfix expression as a space-separated string
-   * @throws IllegalArgumentException if the expression is invalid
+   * @param postfixExpression space-separated postfix string
+   * @throws IllegalArgumentException for invalid expressions
    */
-<span class="fc" id="L148">  public IntervalTree(String postfixExpression) throws IllegalArgumentException {</span>
-<span class="fc bfc" id="L149" title="All 4 branches covered.">    if (postfixExpression == null || postfixExpression.trim().isEmpty()) {</span>
-<span class="fc" id="L150">      throw new IllegalArgumentException(&quot;Expression cannot be null or empty&quot;);</span>
+<span class="fc" id="L153">  public IntervalTree(String postfixExpression) throws IllegalArgumentException {</span>
+<span class="fc bfc" id="L154" title="All 4 branches covered.">    if (postfixExpression == null || postfixExpression.trim().isEmpty()) {</span>
+<span class="fc" id="L155">      throw new IllegalArgumentException(&quot;Expression cannot be null or empty&quot;);</span>
     }
 
-<span class="fc" id="L153">    this.root = parsePostfix(postfixExpression.trim());</span>
-<span class="fc" id="L154">  }</span>
+<span class="fc" id="L158">    this.root = parsePostfix(postfixExpression.trim());</span>
+<span class="fc" id="L159">  }</span>
 
   /**
-   * Parses a postfix interval expression and builds the expression tree.
+   * Parse postfix and build tree using stack.
    *
-   * @param expression the postfix expression
-   * @return the root node of the expression tree
-   * @throws IllegalArgumentException if the expression is invalid
+   * @param expression postfix string
+   * @return root of tree
+   * @throws IllegalArgumentException if malformed
    */
   private Node parsePostfix(String expression) throws IllegalArgumentException {
-<span class="fc" id="L164">    String[] tokens = expression.split(&quot;\\s+&quot;);</span>
-<span class="fc" id="L165">    Stack&lt;Node&gt; stack = new Stack&lt;&gt;();</span>
+<span class="fc" id="L169">    String[] tokens = expression.split(&quot;\\s+&quot;);</span>
+<span class="fc" id="L170">    Stack&lt;Node&gt; stack = new Stack&lt;&gt;();</span>
 
-<span class="fc bfc" id="L167" title="All 2 branches covered.">    for (String token : tokens) {</span>
-<span class="fc bfc" id="L168" title="All 2 branches covered.">      if (isOperator(token)) {</span>
-<span class="fc bfc" id="L169" title="All 2 branches covered.">        if (stack.size() &lt; 2) {</span>
-<span class="fc" id="L170">          throw new IllegalArgumentException(</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">    for (String token : tokens) {</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">      if (isOperator(token)) {</span>
+        // Need two operands for binary operator
+<span class="fc bfc" id="L175" title="All 2 branches covered.">        if (stack.size() &lt; 2) {</span>
+<span class="fc" id="L176">          throw new IllegalArgumentException(</span>
               &quot;Invalid expression: insufficient operands for operator &quot; + token);
         }
-<span class="fc" id="L173">        Node right = stack.pop();</span>
-<span class="fc" id="L174">        Node left = stack.pop();</span>
-<span class="fc" id="L175">        stack.push(new OperatorNode(token, left, right));</span>
-<span class="fc" id="L176">      } else {</span>
-        // Prse as an interval
+        // Pop right then left (reverse order)
+<span class="fc" id="L180">        Node right = stack.pop();</span>
+<span class="fc" id="L181">        Node left = stack.pop();</span>
+<span class="fc" id="L182">        stack.push(new OperatorNode(token, left, right));</span>
+<span class="fc" id="L183">      } else {</span>
+        // Must be an interval
         try {
-<span class="fc" id="L179">          Interval interval = parseInterval(token);</span>
-<span class="fc" id="L180">          stack.push(new IntervalNode(interval));</span>
-<span class="fc" id="L181">        } catch (IllegalArgumentException e) {</span>
-<span class="fc" id="L182">          throw new IllegalArgumentException(&quot;Invalid interval: &quot; + token);</span>
-<span class="fc" id="L183">        }</span>
+<span class="fc" id="L186">          Interval interval = parseInterval(token);</span>
+<span class="fc" id="L187">          stack.push(new IntervalNode(interval));</span>
+<span class="fc" id="L188">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L189">          throw new IllegalArgumentException(&quot;Invalid interval: &quot; + token);</span>
+<span class="fc" id="L190">        }</span>
       }
     }
 
-    // Check that we have exactly one element left (the root)
-<span class="fc bfc" id="L188" title="All 2 branches covered.">    if (stack.size() != 1) {</span>
-<span class="pc bpc" id="L189" title="1 of 2 branches missed.">      if (stack.isEmpty()) {</span>
-<span class="nc" id="L190">        throw new IllegalArgumentException(&quot;Invalid expression: no result&quot;);</span>
+    // Should have exactly one node left
+<span class="fc bfc" id="L195" title="All 2 branches covered.">    if (stack.size() != 1) {</span>
+<span class="pc bpc" id="L196" title="1 of 2 branches missed.">      if (stack.isEmpty()) {</span>
+<span class="nc" id="L197">        throw new IllegalArgumentException(&quot;Invalid expression: no result&quot;);</span>
       } else {
-<span class="fc" id="L192">        throw new IllegalArgumentException(</span>
+<span class="fc" id="L199">        throw new IllegalArgumentException(</span>
             &quot;Invalid expression: too many operands&quot;);
       }
     }
 
-<span class="fc" id="L197">    return stack.pop();</span>
+<span class="fc" id="L204">    return stack.pop();</span>
   }
 
   /**
-   * Parses an interval string in the format &quot;start,end&quot;.
-   * Supports both positive and negative integers.
+   * Parse &quot;start,end&quot; format into Interval.
+   * Handles negative numbers.
    *
-   * @param intervalStr the interval string
-   * @return the parsed Interval object
-   * @throws IllegalArgumentException if the format is invalid
+   * @param intervalStr string to parse
+   * @return new Interval
+   * @throws IllegalArgumentException if bad format
    */
   private Interval parseInterval(String intervalStr) throws IllegalArgumentException {
-<span class="fc" id="L209">    int commaIndex = intervalStr.indexOf(',');</span>
-<span class="fc bfc" id="L210" title="All 2 branches covered.">    if (commaIndex == -1) {</span>
-<span class="fc" id="L211">      throw new IllegalArgumentException(&quot;Invalid interval format: &quot; + intervalStr);</span>
+    // Find comma separator
+<span class="fc" id="L217">    int commaIndex = intervalStr.indexOf(',');</span>
+<span class="fc bfc" id="L218" title="All 2 branches covered.">    if (commaIndex == -1) {</span>
+<span class="fc" id="L219">      throw new IllegalArgumentException(&quot;Invalid interval format: &quot; + intervalStr);</span>
     }
 
-<span class="fc bfc" id="L214" title="All 2 branches covered.">    if (intervalStr.indexOf(',', commaIndex + 1) != -1) {</span>
-<span class="fc" id="L215">      throw new IllegalArgumentException(&quot;Invalid interval format: &quot; + intervalStr);</span>
+    // Check for multiple commas
+<span class="fc bfc" id="L223" title="All 2 branches covered.">    if (intervalStr.indexOf(',', commaIndex + 1) != -1) {</span>
+<span class="fc" id="L224">      throw new IllegalArgumentException(&quot;Invalid interval format: &quot; + intervalStr);</span>
     }
 
-<span class="fc" id="L218">    String startStr = intervalStr.substring(0, commaIndex).trim();</span>
-<span class="fc" id="L219">    String endStr = intervalStr.substring(commaIndex + 1).trim();</span>
+    // Split at comma
+<span class="fc" id="L228">    String startStr = intervalStr.substring(0, commaIndex).trim();</span>
+<span class="fc" id="L229">    String endStr = intervalStr.substring(commaIndex + 1).trim();</span>
 
-<span class="pc bpc" id="L221" title="1 of 4 branches missed.">    if (startStr.isEmpty() || endStr.isEmpty()) {</span>
-<span class="fc" id="L222">      throw new IllegalArgumentException(&quot;Invalid interval format: &quot; + intervalStr);</span>
+    // Both parts must exist
+<span class="pc bpc" id="L232" title="1 of 4 branches missed.">    if (startStr.isEmpty() || endStr.isEmpty()) {</span>
+<span class="fc" id="L233">      throw new IllegalArgumentException(&quot;Invalid interval format: &quot; + intervalStr);</span>
     }
 
     try {
-<span class="fc" id="L226">      int start = Integer.parseInt(startStr);</span>
-<span class="fc" id="L227">      int end = Integer.parseInt(endStr);</span>
-<span class="fc" id="L228">      return new Interval(start, end);</span>
-<span class="fc" id="L229">    } catch (NumberFormatException e) {</span>
-<span class="fc" id="L230">      throw new IllegalArgumentException(&quot;Invalid interval values: &quot; + intervalStr);</span>
+<span class="fc" id="L237">      int start = Integer.parseInt(startStr);</span>
+<span class="fc" id="L238">      int end = Integer.parseInt(endStr);</span>
+<span class="fc" id="L239">      return new Interval(start, end);</span>
+<span class="fc" id="L240">    } catch (NumberFormatException e) {</span>
+<span class="fc" id="L241">      throw new IllegalArgumentException(&quot;Invalid interval values: &quot; + intervalStr);</span>
     }
   }
 
   /**
-   * Checks if a token is a valid operator.
+   * Check if token is U or I operator.
    *
-   * @param token the token to check
-   * @return true if the token is an operator, false otherwise
+   * @param token string to check
+   * @return true if operator
    */
   private boolean isOperator(String token) {
-<span class="fc bfc" id="L241" title="All 4 branches covered.">    return token.equals(&quot;U&quot;) || token.equals(&quot;I&quot;);</span>
+<span class="fc bfc" id="L252" title="All 4 branches covered.">    return token.equals(&quot;U&quot;) || token.equals(&quot;I&quot;);</span>
   }
 
   @Override
   public Interval evaluate() {
-<span class="fc" id="L246">    return root.evaluate();</span>
+<span class="fc" id="L257">    return root.evaluate();</span>
   }
 
   @Override
   public String textTree() {
-<span class="fc" id="L251">    return root.textTree(&quot;&quot;, true);</span>
+<span class="fc" id="L262">    return root.textTree(&quot;&quot;, true);</span>
   }
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ExpressionTreeTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2025-09-09T22:06:29" hostname="harsh" time="0.289">
+<testsuite name="ExpressionTreeTest" tests="27" skipped="0" failures="0" errors="0" timestamp="2025-09-10T17:57:50" hostname="harsh" time="0.087">
   <properties/>
-  <testcase name="testInvalidOperator" classname="ExpressionTreeTest" time="0.139"/>
-  <testcase name="testTooFewOperandsForOperator" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testSimpleMultiplication" classname="ExpressionTreeTest" time="0.098"/>
-  <testcase name="testOnlyOperator" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testScientificNotation" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testSingleNumber" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testDivisionByZeroComplex" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testSimpleAddition" classname="ExpressionTreeTest" time="0.007"/>
-  <testcase name="testTooManyOperands" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testNegativeAndZero" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testEmptyExpression" classname="ExpressionTreeTest" time="0.0"/>
-  <testcase name="testNullExpression" classname="ExpressionTreeTest" time="0.003"/>
-  <testcase name="testMultipleOperatorsNoOperands" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testSimpleSubtraction" classname="ExpressionTreeTest" time="0.003"/>
-  <testcase name="testWhitespaceHandling" classname="ExpressionTreeTest" time="0.002"/>
-  <testcase name="testWhitespaceOnlyExpression" classname="ExpressionTreeTest" time="0.003"/>
-  <testcase name="testComplexTextTree" classname="ExpressionTreeTest" time="0.002"/>
-  <testcase name="testSimpleDivision" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testIntegerFormatting" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testDivisionByZero" classname="ExpressionTreeTest" time="0.003"/>
-  <testcase name="testStackSizeValidation" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testInvalidToken" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testComplexExpression1" classname="ExpressionTreeTest" time="0.002"/>
-  <testcase name="testComplexExpression4" classname="ExpressionTreeTest" time="0.003"/>
-  <testcase name="testFloatFormatting" classname="ExpressionTreeTest" time="0.001"/>
-  <testcase name="testTooFewOperandsComplex" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testSubtract" classname="ExpressionTreeTest" time="0.077"/>
+  <testcase name="testDecimalFormat" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="checkErrorMessages" classname="ExpressionTreeTest" time="0.002"/>
+  <testcase name="unknownOperator" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="notEnoughOperands2" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testWithZero" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testComplexNesting" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="divByZeroIndirect" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testAddTwoNumbers" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="justOperator" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testIntegerFormat" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="justSpaces" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="tooManyNumbers" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testScientificNumbers" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testSpacesAndTabs" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="nullInput" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="emptyString" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="operatorsOnly" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testDivide" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testMultiply" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="notEnoughOperands" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="divByZero" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testTreeVisualization" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testNestedOps" classname="ExpressionTreeTest" time="0.001"/>
+  <testcase name="testSingleValue" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="testNegativeNumbers" classname="ExpressionTreeTest" time="0.0"/>
+  <testcase name="badToken" classname="ExpressionTreeTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

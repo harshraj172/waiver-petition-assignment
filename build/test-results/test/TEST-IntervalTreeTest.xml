@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="IntervalTreeTest" tests="35" skipped="0" failures="0" errors="0" timestamp="2025-09-09T22:06:29" hostname="harsh" time="0.218">
+<testsuite name="IntervalTreeTest" tests="35" skipped="0" failures="0" errors="0" timestamp="2025-09-10T17:57:50" hostname="harsh" time="0.068">
   <properties/>
-  <testcase name="testSimpleUnion" classname="IntervalTreeTest" time="0.182"/>
-  <testcase name="testInvalidIntervalValues1" classname="IntervalTreeTest" time="0.002"/>
-  <testcase name="testInvalidIntervalValues2" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testInvalidOperator" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testEqualsExactBehavior" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testTooFewOperandsForOperator" classname="IntervalTreeTest" time="0.002"/>
-  <testcase name="testOnlyOperator" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testNegativeIntervals" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testTooManyOperands" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testMinValueHandling" classname="IntervalTreeTest" time="0.002"/>
-  <testcase name="testSimpleIntersection" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testEmptyExpression" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testIntervalOperatorExactBehavior" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testNullExpression" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="nullTest" classname="IntervalTreeTest" time="0.01"/>
+  <testcase name="testBasicUnion" classname="IntervalTreeTest" time="0.046"/>
+  <testcase name="emptyTest" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testComplexOps" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="tooManyArgs" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="missingComma" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="emptyStart" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="notEnoughArgs" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="dashNotComma" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testEmptyIntersection" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="notEnoughArgs2" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testOperatorBehavior" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testWhitespace" classname="IntervalTreeTest" time="0.0"/>
   <testcase name="testSingleInterval" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testHashCodeConsistency" classname="IntervalTreeTest" time="0.005"/>
-  <testcase name="testMathMinMaxMutations" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testZeroLengthInterval" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testWhitespaceHandling" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testIntervalTreeEmptyChecks" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testWhitespaceOnlyExpression" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testComplexTextTree" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testComplexExpression" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testChainedOperations" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testTouchingIntervals" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testIntervalIntersectionCondition" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testNoIntersection" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testInvalidIntervalOrder" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testInvalidIntervalFormat1" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testInvalidIntervalFormat2" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testInvalidIntervalFormat3" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testExactComparisonOperators" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testIntervalUnionMathOperations" classname="IntervalTreeTest" time="0.001"/>
-  <testcase name="testTooFewOperandsComplex" classname="IntervalTreeTest" time="0.0"/>
-  <testcase name="testParseIntervalCommaChecks" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testTreeOutput" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testTouching" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="operatorOnly" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testNoOverlap" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="spacesOnly" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testBasicIntersect" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testEmptyStringVariations" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testHashCode" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="notNumbers" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="testIntervalValidation" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testNoIntersectDetails" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testEquals" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testBadCommaFormat" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="decimalsNotAllowed" classname="IntervalTreeTest" time="0.001"/>
+  <testcase name="wrongOperator" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testNegativeNumbers" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testUnionLogic" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="badOrder" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testPointInterval" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testIntervalMethods" classname="IntervalTreeTest" time="0.0"/>
+  <testcase name="testChaining" classname="IntervalTreeTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

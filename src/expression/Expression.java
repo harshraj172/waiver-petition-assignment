@@ -1,83 +1,77 @@
 package expression;
 
 /**
- * This interface represents all the operations on an expression tree,
- * including expression forms and formatting.
+ * Interface for expression trees that support evaluation
+ * and different string representations.
  */
 public interface Expression {
+
   /**
-   * Evaluate this expression.
+   * Evaluate this expression and return its numeric value.
    *
-   * @return the result of this expression as a double-precision value
+   * @return the result of the expression as a double
    */
   double evaluate();
 
   /**
-   * Compute and return the infix form of this expression.
+   * Return the infix form of this expression.
    *
-   * @return the infix form of this expression as a space-separated string
-   *         with parentheses.
+   * <p>The infix form is space-separated and uses parentheses
+   * to make the order of operations explicit.
+   *
+   * @return the infix form as a string
    */
   String infix();
 
   /**
-   * Compute and return a string representation of this expression in valid
-   * Scheme syntax.
+   * Return a Scheme-style representation of this expression.
    *
-   * @return the expression in Scheme as a string
+   * <p>The output is a valid Scheme expression, where operators
+   * precede their operands.
+   *
+   * @return the expression in Scheme syntax
    */
   String schemeExpression();
 
   /**
-   * Returns a string that is the textual representation of the tree
-   * structure. For example, the expression "1 2 +" will be formatted
-   * as a string:
+   * Return a tree-style textual representation of this expression.
+   *
+   * <p>For example, the postfix expression {@code "1 2 +"} would look like:
    * <pre>
    *   +
-   *   |
    *   |
    *   |___1.0
    *   |
    *   |___2.0
    * </pre>
    *
-   * <p>The expression "1 4 6 - 5 + / will be formatted as a
-   * string:
+   * <p>A larger example such as {@code "1 4 6 - 5 + /"} becomes:
    * <pre>
    *   /
-   *   |
    *   |
    *   |___1.0
    *   |
    *   |___+
    *       |
-   *       |
    *       |___-
-   *       |   |
    *       |   |
    *       |   |___4.0
    *       |   |
    *       |   |___6.0
    *       |
    *       |___5.0
+   * </pre>
    *
-   *</pre>
-   * Specifically:
+   * <p>Formatting rules:
    * <ul>
-   *   <li>The first operand always begins three lines down and three
-   *   spaces to the right of the operand</li>
-   *   <li>The second operand begins two lines below the end
-   *   of the first
-   *   operand</li>
-   *   <li>A vertical line (using | characters) exists that connects the line of
-   *   an operator and its two operands</li>
-   *   <li>A horizontal line (using _ characters) exists between the
-   *   vertical line from the operator to the beginning of each operand</li>
-   *   <li>Operators and operands are represented by their respective
-   *   symbols (+,-,*,/) and operand value respectively.</li>
+   *   <li>Left operand starts three lines down and three spaces right of the operator</li>
+   *   <li>Right operand starts two lines after the left subtree</li>
+   *   <li>Vertical bars (|) connect an operator to its children</li>
+   *   <li>Underscores (___) mark horizontal connections</li>
+   *   <li>Operators are shown as symbols (+, -, *, /) and operands as numbers</li>
    * </ul>
    *
-   * @return a string in the above format
+   * @return the expression drawn as a text tree
    */
   String textTree();
 }
